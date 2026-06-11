@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Exemplo JavaScript - Lâmpada</title>
+</head>
+
+<body>
+
+    <!-- Título da página -->
+    <h2>What Can JavaScript Do?</h2>
+
+    <!-- Descrição do exercício -->
+    <p>JavaScript can change HTML attribute values.</p>
+
+    <p>
+        In this case JavaScript changes the value of the src (source)
+        attribute of an image.
+    </p>
+
+    <!--
+        Botão responsável por alterar a imagem para o estado "ligada".
+
+        Ao clicar, o JavaScript localiza o elemento com id="myImage"
+        e altera o atributo src para a imagem da lâmpada acesa.
+    -->
+    <button onclick="document.getElementById('myImage').src='https://www.w3schools.com/js/pic_bulbon.gif'">
+        Turn on the light
+    </button>
+
+    <!--
+        Imagem da lâmpada.
+
+        Alteração realizada:
+        O exemplo original utilizava apenas:
+
+            src="pic_bulboff.gif"
+
+        Como o arquivo não estava disponível localmente, a imagem ficava quebrada.
+
+        Para garantir o funcionamento do exercício em qualquer ambiente,
+        foi utilizada a URL completa da imagem hospedada pelo W3Schools.
+    -->
+    <img id="myImage"
+         src="https://www.w3schools.com/js/pic_bulboff.gif"
+         style="width:100px">
+
+    <!--
+        Botão responsável por alterar a imagem para o estado "desligada".
+
+        Ao clicar, o JavaScript altera novamente o atributo src
+        para a imagem da lâmpada apagada.
+    -->
+    <button onclick="document.getElementById('myImage').src='https://www.w3schools.com/js/pic_bulboff.gif'">
+        Turn off the light
+    </button>
+
+    <!--
+        Resumo da alteração realizada:
+
+        O código original do curso utilizava arquivos locais:
+            - pic_bulbon.gif
+            - pic_bulboff.gif
+
+        Como esses arquivos não estavam disponíveis no ambiente de testes,
+        as imagens não eram carregadas corretamente.
+
+        A solução adotada foi utilizar os links diretos das imagens
+        disponibilizadas pelo W3Schools, mantendo o mesmo comportamento
+        do exercício e facilitando sua execução em qualquer navegador.
+    -->
+
+</body>
+
+</html>
