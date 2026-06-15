@@ -107,93 +107,116 @@ ou
 
 ## Atributos Importantes dos Campos
 
-| Atributo      | Função                          |
-| ------------- | ------------------------------- |
-| `id`          | Identificador único             |
-| `name`        | Nome enviado ao servidor        |
-| `value`       | Valor inicial                   |
-| `placeholder` | Texto de exemplo                |
-| `required`    | Campo obrigatório               |
-| `readonly`    | Apenas leitura                  |
-| `disabled`    | Campo desabilitado              |
-| `maxlength`   | Limita quantidade de caracteres |
-| `min`         | Valor mínimo                    |
-| `max`         | Valor máximo                    |
+| Atributo      | Função                                                |
+| ------------- | ----------------------------------------------------- |
+| `id`          | Identificador único                                   |
+| `name`        | Nome enviado ao servidor                              |
+| `value`       | Valor inicial                                         |
+| `placeholder` | Exibe um texto de exemplo dentro do campo             |
+| `required`    | Torna o preenchimento obrigatório                     |
+| `autofocus`   | Define o campo que receberá foco ao carregar a página |
+| `readonly`    | Permite apenas leitura                                |
+| `disabled`    | Desabilita o campo                                    |
+| `maxlength`   | Limita a quantidade máxima de caracteres              |
+| `minlength`   | Define a quantidade mínima de caracteres              |
+| `min`         | Valor mínimo permitido                                |
+| `max`         | Valor máximo permitido                                |
+| `pattern`     | Valida o conteúdo usando Expressões Regulares (RegEx) |
+
+### Exemplos
+
+```html
+<input type="text" placeholder="Digite seu nome">
+
+<input type="text" required>
+
+<input type="text" autofocus>
+
+<input type="tel" pattern="[0-9]{11}">
+```
 
 ---
 
 ## Tipos do atributo `type`
 
 ### Texto
-
 ```html
 <input type="text">
 ```
-
 Campo para texto simples.
 
 ### Senha
-
 ```html
 <input type="password">
 ```
-
 Oculta os caracteres digitados.
 
 ### E-mail
-
 ```html
 <input type="email">
 ```
-
 Valida automaticamente o formato de e-mail.
 
 ### Número
-
 ```html
 <input type="number">
 ```
-
 Aceita apenas valores numéricos.
 
 ### Data
-
 ```html
 <input type="date">
 ```
-
 Exibe seletor de data.
 
-### Arquivo
+### Telefone
+```html
+<input type="tel">
+```
+Utilizado para inserção de números de telefone.
+**Observação:** recomenda-se utilizar juntamente com o atributo `pattern` para validar o formato esperado.
 
+### Data e Hora
+```html
+<input type="datetime-local">
+```
+Permite informar data e hora.
+
+### Data
+```html
+<input type="date">
+```
+Permite selecionar uma data através de um calendário fornecido pelo navegador.
+
+### Número
+```html
+<input type="number">
+```
+Permite a entrada de valores numéricos.
+**Observação:** normalmente apresenta controles de incremento e decremento através de setas no navegador.
+
+### Arquivo
 ```html
 <input type="file">
 ```
-
 Permite upload de arquivos.
 
 ### Botão de Envio
-
 ```html
 <input type="submit">
 ```
-
 Envia os dados do formulário.
 
 ### Botão de Limpeza
-
 ```html
 <input type="reset">
 ```
-
 Limpa os campos preenchidos.
 
 ### Botão Comum
-
 ```html
 <input type="button">
 ```
-
 Utilizado normalmente com JavaScript.
 
 ---
