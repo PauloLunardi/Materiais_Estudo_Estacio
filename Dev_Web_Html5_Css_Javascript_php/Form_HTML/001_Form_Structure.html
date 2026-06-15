@@ -9,8 +9,10 @@
       <input type="text" minlength="3" id:"nome" />
     <label for="data_nascimento">Data de Nascimento:</label>
       <input type="text" id="data_nascimento" />
+<!-- CPF possui apenas números, então pensei em usar type="number" -->
+<!-- Porém, na prática, é mais comum usar type="text" com validação -->
     <label for="cpf">CPF:</label>
-      <input type="cpf" minlength="11" id:"cpf" />
+      <input type="number" minlength="11" id:="cpf" />
   </fieldset>
 
 <!-- Parte do form: Endereço -->
