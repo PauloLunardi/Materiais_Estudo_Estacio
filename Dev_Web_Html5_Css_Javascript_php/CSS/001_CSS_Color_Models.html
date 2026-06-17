@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Modelo de Cores</title>
+
+  <style>
+
+    #container {
+      padding: 10px;
+      font-weight: bold;
+      /*width: 600px;*/
+      margin: 0 auto;
+    }
+
+    #rgb,
+    #rgba,
+    #hsl,
+    #hsla{
+      width: 170px;
+      height: 150px;
+      padding: 5px;
+      margin-right: 5px;
+      display: inline-block;
+      vertical-align: top;
+    }
+
+    #rgb {
+      background-color: rgb(255, 0, 51);
+    }
+
+    #rgba {
+      background-color: rgba(255, 0, 51, 40%);
+    }
+
+    #hsl {
+      background-color: hsl(0, 100%, 50%);
+    }
+
+    #hsla {
+      background-color: hsla(0, 100%, 50%, 40%);
+    }
+
+  </style>
+</head>
+
+<body>
+
+  <div id="container">
+    <div id="rgb">RGB - Red, Green e Blue</div>
+    <div id="rgba">RGBA</div>
+    <div id="hsl">HSL - Hue, Saturation e Lightness</div>
+    <div id="hsla">HSLA</div>
+  </div>
+
+</body>
+
+</html>
