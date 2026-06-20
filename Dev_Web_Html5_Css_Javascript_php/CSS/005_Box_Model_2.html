@@ -3,45 +3,72 @@
 <head>
   <meta charset="utf-8">
   <title>Exemplo 2 - Box Model em CSS</title>
+
   <style>
-    body{font-size:2rem;
+
+    body {
+      font-size: 2rem;
     }
 
-    #container{
-      width:1070px;
+    #container {
+      width: 1070px;
       margin: 0 auto;
-      /*display: flex;*/
-      /*flexdirection: row;*/ /*todos os elementos numa única linha*/
-      /*flexdirection: column;*/ /*todos os elementos numa única coluna*/ 
+
+      /* display: flex; */
+      /* flex-direction: row; */
+      /* flex-direction: column; */
     }
-    
-    /*Uso da pseudoclasse :hover*/
-    #link:hover{
+
+    /* Uso da pseudoclasse :hover */
+    #link:hover {
       color: orange;
     }
 
-    /*Uso do pseudoelemento ::first-line*/
-    #container::first-line {
+    /* Container do texto */
+    #container-texto {
+      padding: 20px;
+      background-color: orange;
+      border: 30px solid #999;
+      margin-top: 50px;
+    }
+
+    /* Uso do pseudoelemento ::first-line */
+    #container-texto::first-line {
       color: blue;
       text-transform: uppercase;
     }
 
   </style>
+
 </head>
+
 <body>
+
   <div id="container">
+
     <h1>PseudoClasses</h1>
+
     <a href="#" id="link">Link</a>
 
     <h1>PseudoElementos</h1>
-    <p id="container">
+
+    <p id="container-texto">
+      Os pseudoelementos são recursos avançados do CSS que permitem estilizar partes específicas de um elemento HTML sem a necessidade de alterar sua estrutura original.
+      Com eles, é possível aplicar estilos a trechos específicos de conteúdo, inserir elementos visuais antes ou depois de um elemento e criar efeitos visuais de maneira simples e organizada.
+      Uma das principais vantagens dos pseudoelementos é a redução da quantidade de código HTML.
+      Em muitos casos, seria necessário adicionar novas tags apenas para aplicar um estilo específico.
+      Utilizando pseudoelementos, o mesmo resultado pode ser alcançado diretamente pelo CSS, tornando o código mais limpo e fácil de manter.
+    </p>
+
   </div>
+
   <div id="box_exemplo">
     Conteúdo do box de exemplo.
   </div>
+
   <div id="box_final">
     Conteúdo do box final.
   </div>
-  
+
 </body>
 </html>
