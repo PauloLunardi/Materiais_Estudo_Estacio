@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Exemplo HTTP</title>
+</head>
+
+<body>
+
+  <h1>Consulta HTTP com JavaScript</h1>
+
+  <!-- Botão que executa a função buscarUsuario() -->
+  <button onclick="buscarUsuario()">
+    Buscar Usuário
+  </button>
+
+  <!-- Local onde os dados retornados pela API serão exibidos -->
+  <p id="resultado"></p>
+
+  <script>
+
+    // Função responsável por realizar a chamada HTTP
+    function buscarUsuario() {
+
+      // Faz uma requisição GET para uma API pública
+      fetch("https://jsonplaceholder.typicode.com/users/1")
+
+        // Converte a resposta recebida para o formato JSON
+        .then(response => response.json())
+
+        // Manipula os dados retornados pela API
+        .then(dados => {
+
+          // Atualiza o conteúdo do elemento HTML com os dados recebidos
+          document.getElementById("resultado").innerHTML =
+
+            // Template String utilizada para exibir os valores
+            `Nome: ${dados.name}<br>
+             Email: ${dados.email}`;
+
+        })
+
+        // Executa caso ocorra algum erro durante a requisição
+        .catch(erro => {
+
+          // Exibe o erro no console do navegador
+          console.log("Erro:", erro);
+
+        });
+
+    }
+
+  </script>
+
+</body>
+
+</html>
