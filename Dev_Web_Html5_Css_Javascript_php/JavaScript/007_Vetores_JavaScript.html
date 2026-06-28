@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+  <!-- Botão que executa a função ao ser clicado -->
+  <button onclick="executar()">Clique Aqui</button>
+
+  <div id="resultado"></div>
+
+  <script>
+
+    const executar = () => {
+
+      const valores = [1, 6, 5, 9, 2];
+
+      valores.sort();
+
+      // Console
+      console.log("Vetor ordenado:", valores);
+
+      valores.forEach((elemento, indice) => {
+        console.log(`Valor[${indice}] = ${elemento}`);
+      });
+
+      const somaDobro = valores
+        .map(e => e * 2)
+        .reduce((a, b) => a + b);
+
+      console.log("Soma 2x =", somaDobro);
+
+      // HTML
+      document.getElementById("resultado").innerHTML = `
+        <h3>Resultado do Exercício</h3>
+        <p><strong>Vetor ordenado:</strong> ${valores.join(", ")}</p>
+        <p><strong>Posição 3:</strong> ${valores[3]}</p>
+        <p><strong>Soma dos valores dobrados:</strong> ${somaDobro}</p>
+      `;
+
+    }
+
+  </script>
+  
+  <!-- sort()    // ordenar -->
+  <!-- forEach() // percorrer -->
+  <!-- map()     // transformar -->
+  <!-- reduce()  // reduzir/somar -->
+
+</body>
+</html>
