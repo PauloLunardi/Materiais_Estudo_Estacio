@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Exemplo HTTP com XMLHttpRequest</title>
+</head>
+
+<body>
+
+  <h1>Consulta HTTP com JavaScript</h1>
+
+  <!-- Botão que executa a função -->
+  <button onclick="buscarUsuario()">
+    Buscar Usuário
+  </button>
+
+  <!-- Local onde será exibida a resposta -->
+  <p id="resultado"></p>
+
+  <script>
+
+    function buscarUsuario() {
+
+      // Cria um objeto responsável pela requisição HTTP
+      let xhttp = new XMLHttpRequest();
+
+      // Monitora as mudanças de estado da requisição
+      xhttp.onreadystatechange = function() {
+
+        // readyState = 4 -> requisição concluída
+        // status = 200 -> resposta recebida com sucesso
+        if (this.readyState == 4 && this.status == 200) {
+
+          // Converte a resposta JSON para objeto JavaScript
+          let dados = JSON.parse(this.responseText);
+
+          // Atualiza o conteúdo da página
+          document.getElementById("resultado").innerHTML =
+            `Nome: ${dados.name}<br>
+             Email: ${dados.email}`;
+        }
+      };
+
+      // Define o método HTTP e a URL da API
+      xhttp.open(
+        "GET",
+        "https://jsonplaceholder.typicode.com/users/1",
+        true
+      );
+
+      // Envia a requisição
+      xhttp.send();
+    }
+
+  </script>
+
+</body>
+
+</html>
