@@ -1,0 +1,39 @@
+<!-- Arquivo HTML - Parte 1 -->
+<<!DOCTYPE html>
+<html>
+<body>
+  <form>
+    <label>Valor A</label> <input type="number" id="v1"/>
+    <label>Valor B</label> <input type="number" id="v2"/>
+    <label>Operação</label>
+
+    <select id="oper">
+      <option>Soma</option>
+      <option>Subtração</option>
+      <option>Multiplicação</option>
+      <option>Divisão</option>
+      <option>Potência</option>
+    </select>
+    <a href="#" onclick="executar()">Executar</a>
+  </form>
+
+  <div id="resp">O resultado aparece aqui</div>
+
+<!-- Arquivo HTML - Parte 2 -->
+  <script src="ROT_MOD1-NC3.js"></script>
+  <script>
+    const executar = () => {
+      const a = Number(document.getElementById("v1").value);
+      const b = Number(document.getElementById("v2").value);
+      let oper = eval(document.getElementById("oper").selectedIndex);
+      let resultado = (oper==0)?somar(a,b): 
+        (oper==1)?subtrair(a,b): 
+        (oper==2)?multiplicar(a,b):
+        (oper==3)?dividir(a,b):
+        exponbencial(a,b);
+      document.getElementById("resp").innerHTML = `Oresultado da operação é ${resultado}`;
+    }
+  </script>
+  
+</body>
+</html>
