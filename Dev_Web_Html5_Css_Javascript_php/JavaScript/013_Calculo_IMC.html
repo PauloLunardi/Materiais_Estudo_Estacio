@@ -1,19 +1,56 @@
-<!-- Arquivo HTML - Parte 2 -->
+<!DOCTYPE html>
+<html lang="pt-BR">
 
-<script src="012_Calculo_IMC.js"></script>
+<head>
+    <meta charset="utf-8">
+    <title>Calculadora de IMC</title>
+</head>
 
-<script>
+<body>
 
-const executar = () => {
+    <h1>Cálculo de IMC</h1>
 
-    const peso = eval(document.getElementById("v1").value);
-    const altura = eval(document.getElementById("v2").value);
+    <form>
 
-    const v_imc = imc(peso, altura);
-    const v_sit = situacao(v_imc);
+        <label for="v1">Peso (kg):</label>
+        <input type="number" id="v1" step="0.1">
 
-    alert(`IMC: ${v_imc.toFixed(2)} :: Situação: ${v_sit}`);
+        <br><br>
 
-}
+        <label for="v2">Altura (m):</label>
+        <input type="number" id="v2" step="0.01">
 
-</script>
+        <br><br>
+
+        <button type="button" onclick="executar()">
+            Calcular IMC
+        </button>
+
+    </form>
+
+    <!-- Importação do arquivo JavaScript externo -->
+    <script src="012_Calculo_IMC.js"></script>
+
+    <!-- Código JavaScript da página -->
+    <script>
+
+        const executar = () => {
+
+            /* Obtém os valores digitados pelo usuário */
+            const peso = eval(document.getElementById("v1").value);
+            const altura = eval(document.getElementById("v2").value);
+
+            /* Chama as funções do arquivo externo */
+            const v_imc = imc(peso, altura);
+            const v_sit = situacao(v_imc);
+
+            /* Exibe o resultado */
+            alert(`IMC: ${v_imc.toFixed(2)} :: Situação: ${v_sit}`);
+
+        }
+
+    </script>
+
+</body>
+
+</html>
