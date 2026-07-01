@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>Exemplo de Texto com Join</title>
+    <style>
+        body { font-family: sans-serif; padding: 20px; line-height: 1.6; }
+        #resultado { 
+            background-color: #f4f4f4; 
+            padding: 15px; 
+            border-left: 5px solid #333;
+            margin-top: 10px;
+        }
+        button { cursor: pointer; padding: 10px; }
+    </style>
+</head>
+<body>
+
+    <h2>Gerador de Texto</h2>
+    <p>Clique no botão para reunir as frases abaixo em um único texto:</p>
+    
+    <ul id="lista-frases">
+        <li>JavaScript é poderoso.</li>
+        <li>O método join facilita a vida.</li>
+        <li>Manipular o DOM é essencial.</li>
+    </ul>
+
+    <button onclick="gerarTexto()">Gerar Texto com Join</button>
+
+    <div id="resultado">O texto aparecerá aqui...</div>
+
+    <script>
+        function gerarTexto() {
+            // 1. Criamos um array de strings
+            const frases = [
+                "JavaScript é poderoso.",
+                "O método join facilita a vida.",
+                "Manipular o DOM é essencial."
+            ];
+
+            // 2. Usamos o .join(' ') para unir os elementos com um espaço entre eles
+            // Você pode trocar o ' ' por ', ' ou '<br>' se desejar.
+            const textoFinal = frases.join(' ');
+
+            // 3. Exibimos no HTML
+            document.getElementById('resultado').innerText = textoFinal;
+        }
+    </script>
+
+</body>
+</html>
