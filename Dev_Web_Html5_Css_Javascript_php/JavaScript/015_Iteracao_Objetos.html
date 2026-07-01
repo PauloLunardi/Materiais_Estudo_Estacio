@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="utf-8">
+    <title>Iteração em Objetos</title>
+</head>
+
+<body>
+
+    <h1>Iteração em Objetos JavaScript</h1>
+
+    <button onclick="executar()">
+        Exibir Dados
+    </button>
+
+    <div id="resultado">
+        Os dados aparecerão aqui.
+    </div>
+
+    <script>
+
+        const executar = () => {
+
+            /* Objeto com várias propriedades */
+            const pessoa = {
+                nome: "Paulo",
+                idade: 30,
+                profissao: "Consultor SAP MM",
+                linguagem: "JavaScript"
+            };
+
+            let texto = "<h2>Dados da Pessoa</h2>";
+
+            /* Percorrendo todas as propriedades do objeto */
+            for (let chave in pessoa) {
+
+                texto += `${chave}: ${pessoa[chave]}<br>`;
+
+                console.log(`${chave}: ${pessoa[chave]}`);
+
+            }
+
+            document.getElementById("resultado").innerHTML = texto;
+
+        }
+
+    </script>
+
+</body>
+
+</html>
