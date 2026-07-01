@@ -1,0 +1,43 @@
+<html>
+<body>
+    <button onClick="executar()">Processar Notas</button>
+
+    <script>
+
+    executar = () => {
+        const notas = [8.5, 6.0, 4.0, 10.0, 7.5];
+        
+        // SORT: Ordena os números do menor para o maior
+        notas.sort((a, b) => a - b);
+        console.log("Notas ordenadas:", notas);
+        
+        // FOREACH: Apenas percorre e exibe cada elemento (não altera os dados)
+        notas.forEach((element, index) => console.log(`Nota[${index}]: ${element}`));
+        
+        // MAP: Cria novo array transformando os dados (+1 ponto de bônus)
+        const notasComBonus = notas.map(nota => nota + 1);
+        console.log("Notas com bônus:", notasComBonus);
+        
+        // REDUCE: Acumula e reduz o array a um único valor (soma das notas)
+        const somaTotal = notasComBonus.reduce((acumulador, nota) => acumulador + nota, 0);
+        console.log("Soma total das notas:", somaTotal);
+        
+        const media = somaTotal / notas.length;
+        console.log("Média final da turma: " + media);
+    }
+    /*
+    SAÍDA ESPERADA NO CONSOLE:
+    Notas ordenadas: (5) [4, 6, 7.5, 8.5, 10]
+    Nota[0]: 4 | Nota[1]: 6 | Nota[2]: 7.5 | Nota[3]: 8.5 | Nota[4]: 10
+    Notas com bônus: (5) [5, 7, 8.5, 9.5, 11]
+    Soma total das notas: 41
+    Média final da turma: 8.2 (Links "try_php.php..." são apenas o W3Schools indicando a linha)
+
+    DICA DE USO:
+    - Em estudos: Vale usar os dois juntos para praticar leitura e transformação.
+    - Em projetos reais: Evite usar forEach e map seguidos no mesmo array, pois
+      faz o código percorrer a lista duas vezes desnecessariamente.
+    */
+    </script>
+</body>
+</html>
