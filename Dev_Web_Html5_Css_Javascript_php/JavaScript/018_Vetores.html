@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="utf-8">
+    <title>Utilização de Vetores</title>
+</head>
+<body>
+
+    <h1>Utilização de Vetores</h1>
+
+    <button onclick="executar()">
+        Executar Exemplo
+    </button>
+
+    <hr>
+
+    <div id="demo">
+        Aguardando execução...
+    </div>
+
+    <script>
+
+        const executar = () => {
+
+            // Vetor criado utilizando colchetes []
+            let cores1 = ["red", "blue", "green"];
+
+            // Vetor criado utilizando o construtor Array()
+            let cores2 = new Array("red", "blue", "green");
+
+            // Vetores vazios
+            let vazio1 = [];
+            let vazio2 = new Array();
+
+            console.log("cores1:", cores1);
+            console.log("cores2:", cores2);
+
+            // Índices começam em 0
+            console.log("cores1[0]:", cores1[0]);
+            console.log("cores1[1]:", cores1[1]);
+            console.log("cores1[2]:", cores1[2]);
+
+            // Exibe a cor da posição 2
+            console.log("Cor escolhida:", cores1[2]);
+
+            // Altera a cor do texto da DIV
+            document.getElementById("demo").style.color = cores2[1];
+
+            document.getElementById("demo").innerHTML =
+                `A cor aplicada foi ${cores2[1]}`;
+
+        }
+
+    </script>
+
+</body>
+</html>
