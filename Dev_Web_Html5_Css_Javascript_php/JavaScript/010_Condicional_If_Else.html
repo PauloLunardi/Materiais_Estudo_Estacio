@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Estruturas Condicionais</title>
+</head>
+<body>
+
+    <h1>Exemplo de Condicionais (if / else if / else)</h1>
+
+    <button onclick="verificarHorario()">
+        Verificar Horário
+    </button>
+
+    <div id="resultado">
+        Clique no botão para verificar a saudação.
+    </div>
+
+    <script>
+
+        function verificarHorario() {
+
+            // Obtém a hora atual do computador
+            let hora = new Date().getHours();
+
+            let mensagem = "";
+
+            // Estrutura condicional
+            if (hora < 12) {
+
+                mensagem = "Bom dia!";
+
+            } else if (hora < 18) {
+
+                mensagem = "Boa tarde!";
+
+            } else {
+
+                mensagem = "Boa noite!";
+
+            }
+
+            // Exibe o resultado na página
+            document.getElementById("resultado").innerHTML =
+                `Agora são ${hora} horas. ${mensagem}`;
+
+        }
+
+    </script>
+
+</body>
+</html>
