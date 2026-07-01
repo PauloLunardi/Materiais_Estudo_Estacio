@@ -7,25 +7,34 @@
   Cada número é a soma dos dois anteriores.
 */
 
+/*
+  Gera toda a sequência de Fibonacci
+  até a posição informada.
+*/
+
 const fibonacci = (x) => {
 
-    // Casos iniciais da sequência
-    if (x === 0 || x === 1) {
-        return 1;
+    let sequencia = [1];
+
+    if (x === 0) {
+        return sequencia;
     }
 
-    let fm1 = 1; // Fibonacci anterior
-    let fm2 = 1; // Fibonacci atual
-    let fm;      // Resultado temporário
+    sequencia.push(1);
 
-    // Calcula a sequência até a posição desejada
+    let fm1 = 1;
+    let fm2 = 1;
+    let fm;
+
     for (let i = 2; i <= x; i++) {
 
         fm = fm1 + fm2;
+
+        sequencia.push(fm);
 
         fm2 = fm1;
         fm1 = fm;
     }
 
-    return fm;
+    return sequencia;
 }
