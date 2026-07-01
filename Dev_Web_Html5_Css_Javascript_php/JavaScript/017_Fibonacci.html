@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="utf-8">
+    <title>Sequência de Fibonacci</title>
+</head>
+
+<body>
+
+    <h1>Cálculo de Fibonacci</h1>
+
+    <label>Posição da sequência:</label>
+    <input type="number" id="v1" value="10">
+
+    <button onclick="executar()">
+        Calcular
+    </button>
+
+    <hr>
+
+    <div id="resultado">
+        O resultado aparecerá aqui.
+    </div>
+
+    <!-- Arquivo JS externo -->
+    <script src="017_Fibonacci.js"></script>
+
+    <script>
+
+        const executar = () => {
+
+            // Captura o valor digitado
+            const posicao =
+                parseInt(document.getElementById("v1").value);
+
+            // Chama a função do arquivo externo
+            const resultado =
+                fibonacci(posicao);
+
+            // Exibe na página
+            document.getElementById("resultado").innerHTML =
+                `Fibonacci(${posicao}) = ${resultado}`;
+
+            // Exibe também no console
+            console.log(
+                `Fibonacci(${posicao}) = ${resultado}`
+            );
+
+        }
+
+    </script>
+
+</body>
+
+</html>
