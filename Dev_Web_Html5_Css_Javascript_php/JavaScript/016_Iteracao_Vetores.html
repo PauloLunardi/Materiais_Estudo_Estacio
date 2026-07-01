@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="utf-8">
+    <title>Iteração em Vetores</title>
+</head>
+
+<body>
+
+    <h1>Iteração em Vetores</h1>
+
+    <button onclick="executar()">
+        Exibir Vetor
+    </button>
+
+    <div id="resultado">
+        Os dados aparecerão aqui.
+    </div>
+
+    <script>
+
+        const executar = () => {
+
+            /* Vetor utilizado nos exemplos */
+            const tecnologias = [
+                "HTML",
+                "CSS",
+                "JavaScript",
+                "Python",
+                "SAP"
+            ];
+
+            let texto = "<h2>FOR Tradicional</h2>";
+
+            /* Percorre o vetor utilizando índice */
+            for (let i = 0; i < tecnologias.length; i++) {
+
+                texto += `Posição ${i}: ${tecnologias[i]}<br>`;
+                console.log(`FOR -> ${i}: ${tecnologias[i]}`);
+
+            }
+
+            texto += "<h2>FOR...IN</h2>";
+
+            /* Percorre os índices do vetor */
+            for (let x in tecnologias) {
+
+                texto += `Índice ${x}: ${tecnologias[x]}<br>`;
+                console.log(`FOR IN -> ${x}: ${tecnologias[x]}`);
+
+            }
+
+            texto += "<h2>FOR...OF</h2>";
+
+            /* Percorre diretamente os valores */
+            for (let x of tecnologias) {
+
+                texto += `Valor: ${x}<br>`;
+                console.log(`FOR OF -> ${x}`);
+
+            }
+
+            /* Exibe o resultado na página */
+            document.getElementById("resultado").innerHTML = texto;
+
+        }
+
+    </script>
+
+</body>
+
+</html>
