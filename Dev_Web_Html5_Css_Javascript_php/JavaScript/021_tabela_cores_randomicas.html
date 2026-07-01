@@ -1,0 +1,35 @@
+<html>
+<body>
+    <table style="width: 100%;">
+    <script>
+    // NOME SUGERIDO PARA O GITHUB: 021_tabela_cores_randomicas.html
+
+    const cores = ["red", "green", "blue"];
+
+    // Loop externo: cria as linhas (<tr>) da tabela
+    for(let i = 1; i < 10; i++){
+        document.write("<tr>");
+
+        // Loop interno: cria as células (<td>) de cada linha
+        for(let j = 1; j < 10; j++){
+            
+            // MATH.RANDOM: Sorteia um índice de 0 a 2 para escolher a cor
+            let pos = Math.trunc(Math.random() * 3);
+            
+            // Injeta a tag <td> com a cor de fundo sorteada na página
+            document.write(`<td style='background-color:${cores[pos]}'>&nbsp;</td>`);
+        }
+
+        document.write("</tr>");
+    }
+    /*
+    O QUE ESSE CÓDIGO FAZ:
+    - Gera uma tabela dinâmica de 9x9 elementos na tela.
+    - O Math.random() * 3 gera números decimais entre 0 e 2.999...
+    - O Math.trunc() corta os decimais, deixando apenas inteiros (0, 1 ou 2).
+    - Esses inteiros servem para puxar "red", "green" ou "blue" do array.
+    */
+    </script>
+    </table>
+</body>
+</html>
