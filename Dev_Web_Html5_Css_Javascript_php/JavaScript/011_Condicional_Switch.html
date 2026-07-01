@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Exemplo Switch Case</title>
+</head>
+<body>
+
+    <h1>Exemplo de Switch Case</h1>
+
+    <button onclick="verificarDia()">
+        Verificar Dia da Semana
+    </button>
+
+    <div id="resultado">
+        Clique no botão para exibir o dia atual.
+    </div>
+
+    <script>
+
+        function verificarDia() {
+
+            // Retorna um número de 0 a 6
+            let dia = new Date().getDay();
+
+            let mensagem = "";
+
+            switch (dia) {
+
+                case 0:
+                    mensagem = "Domingo";
+                    break;
+
+                case 1:
+                    mensagem = "Segunda-feira";
+                    break;
+
+                case 2:
+                    mensagem = "Terça-feira";
+                    break;
+
+                case 3:
+                    mensagem = "Quarta-feira";
+                    break;
+
+                case 4:
+                    mensagem = "Quinta-feira";
+                    break;
+
+                case 5:
+                    mensagem = "Sexta-feira";
+                    break;
+
+                case 6:
+                    mensagem = "Sábado";
+                    break;
+
+                default:
+                    mensagem = "Dia inválido";
+            }
+
+            document.getElementById("resultado").innerHTML =
+                `Hoje é ${mensagem}`;
+
+        }
+
+    </script>
+
+</body>
+</html>
