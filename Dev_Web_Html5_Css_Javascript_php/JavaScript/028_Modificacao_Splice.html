@@ -1,0 +1,31 @@
+<html>
+<body>
+<script>
+
+// Vetor inicial de teste
+const vetor =;
+console.log(vetor); 
+
+// SPLICE (Remoção): Remove elementos a partir de um índice
+// Parâmetros: (índice inicial, quantidade a remover) -> Remove 3 itens a partir do índice 2 (remove 3, 4, 5)
+vetor.splice(2, 3);
+console.log(vetor); 
+
+// SPLICE (Inclusão): Insere elementos sem remover nenhum
+// Parâmetros: (índice inicial, 0 para não remover, itens a adicionar...) -> Insere 'X' e 'X' no índice 2
+vetor.splice(2, 0, "X", "X");
+console.log(vetor);
+
+/*
+SAÍDA ESPERADA NO CONSOLE:
+(7) [1, 2, 3, 4, 5, 6, 7]  --> Vetor inicial
+(4) [1, 2, 6, 7]           --> Após remover os 3 elementos
+(6) [1, 2, 'X', 'X', 6, 7] --> Após incluir as duas strings 'X'
+
+DICA: 
+  Diferente do comando 'delete', que deixa um buraco vazio (undefined) no array, 
+o método '.splice()' realmente altera o tamanho do vetor reajustando os índices.
+*/
+</script>
+</body>
+</html>
