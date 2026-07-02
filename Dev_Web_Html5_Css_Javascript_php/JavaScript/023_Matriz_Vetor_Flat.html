@@ -1,0 +1,21 @@
+<html>
+  <body>
+    <script>
+      // NOME SUGERIDO PARA O GITHUB: 023_matriz_flat_vetor.html
+
+      // Cria uma matriz bidimensional (3 linhas e 2 colunas)
+      const matriz = [[1,2],[3,4],[5,6]];
+      console.log(matriz);
+
+      // FLAT: "Aplatina" a matriz, transformando-a em um único vetor unidimensional
+      const vetor = matriz.flat();
+      console.log(vetor);
+    </script>
+  </body>
+</html>
+
+/*
+SAÍDA ESPERADA NO CONSOLE:
+(3) [Array(2), Array(2), Array(2)]  --> Matriz original
+(6) [1, 2, 3, 4, 5, 6]              --> Vetor linearizado (flat)
+*/
