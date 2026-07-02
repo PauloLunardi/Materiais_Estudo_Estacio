@@ -1,24 +1,52 @@
 <!DOCTYPE html>
 <html>
     <!-- OBJETIVO DO EXERCÍCIO: -->
-    <!--1. Criar uma página que receba números informados pelo usuário. -->
-    <!--2. Adicionar esses números digitados dentro de um vetor. -->
-    <!--3. Construir um gráfico de linha relacionando a Posição do item x Valor inserido. -->
-    <!--4. Apresentar na tela a média aritmética de todos os valores que foram inseridos. -->
+    <!-- 1. Criar uma página que receba números informados pelo usuário. -->
+    <!-- 2. Adicionar esses números digitados dentro de um vetor. -->
+    <!-- 3. Construir um gráfico de linha relacionando a Posição do item x Valor inserido. -->
+    <!-- 4. Apresentar na tela a média aritmética de todos os valores que foram inseridos. -->
+
+<head>
+    <!-- Carrega a biblioteca principal do Google Charts via CDN -->
+    <script type="text/javascript" src="https://gstatic.com"></script>
+</head>
 <body>
-    <!-- Importa as funções e variáveis do arquivo JS externo -->
+    <h1>Google Charts</h1>
+    
+    <form>
+        <label>Valor de X</label>
+        <!-- Campo de entrada onde o usuário digita o número -->
+        <input type="number" id="v1"/>
+        <!-- Link que funciona como botão e dispara a função executar() -->
+        <a href="#" onclick="executar()">Executar</a>
+    </form>
+
+    <!-- Div container onde o gráfico gerado pelo drawBasic() será desenhado -->
+    <div id="chart_div"></div>
+    <!-- Div onde o resultado do cálculo da média será injetado -->
+    <div id="media"></div>
+
+    <!-- Importa o script externo conforme seu ajuste -->
     <script src="029_Graficos_by_Vetores.js"></script>
 
     <script>
-        // Executa testes adicionando valores
-        addValor(10);
-        addValor(20);
-        addValor(30);
-
-        // Exibe os resultados calculados pelo script externo no console
-        console.log("Matriz de valores:", valores);
-        console.log("Média calculada:", media());
+    // Função principal responsável por gerenciar o clique e orquestrar o script externo (Parte 2)
+    const executar = () => {
+        // Captura e avalia o valor digitado no campo de texto
+        const x = eval(document.getElementById("v1").value);
+        
+        // Adiciona o valor processado ao vetor do arquivo externo
+        addValor(x);
+        
+        // Inicializa a biblioteca do Google Charts carregando os pacotes necessários
+        google.charts.load('current', {packages: ['corechart', 'line']});
+        
+        // Garante a chamada segura da função de desenho assim que a API carregar
+        google.charts.setOnLoadCallback(drawBasic);
+        
+        // Calcula a média via script externo e injeta o resultado na div correspondente
+        document.getElementById("media").innerHTML = `Media: ${media()}`;
+    }
     </script>
-    
 </body>
 </html>
