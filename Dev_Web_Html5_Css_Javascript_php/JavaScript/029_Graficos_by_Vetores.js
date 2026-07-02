@@ -1,8 +1,19 @@
 let valores = [];
 
 const addValor = (x) => {
-    // Insere na lista um par contendo: [próxima_posição, valor_x]
-    valores.push([valores.length + 1, x]);
+    // .split(" ") quebra o texto em vários pedaços usando o espaço como separador
+    const numerosDigitados = String(x).split(" ");
+
+    // Percorre cada pedaço que foi separado por espaço
+    for (let i = 0; i < numerosDigitados.length; i++) {
+        // Converte o pedaço de texto para número real
+        const numero = parseFloat(numerosDigitados[i]);
+        
+        // Garante que só vai adicionar se o pedaço não for um espaço vazio ou texto inválido
+        if (!isNaN(numero)) {
+            valores.push([valores.length + 1, numero]);
+        }
+    }
 }
 
 const media = () => {
@@ -11,7 +22,7 @@ const media = () => {
     // Percorre cada par [posição, valor] contido na matriz
     for (x of valores) {
         // Soma apenas o valor, que está armazenado no índice 1 do par
-        soma += x[1];
+        soma += x;
     }
     
     // Divide a soma total pela quantidade de elementos da matriz
