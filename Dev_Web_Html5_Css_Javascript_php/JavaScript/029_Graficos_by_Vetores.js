@@ -11,7 +11,7 @@ const media = () => {
     // Percorre cada par [posição, valor] contido na matriz
     for (x of valores) {
         // Soma apenas o valor, que está armazenado no índice 1 do par
-        soma += x;
+        soma += x[1];
     }
     
     // Divide a soma total pela quantidade de elementos da matriz
