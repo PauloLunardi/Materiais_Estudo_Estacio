@@ -1,0 +1,22 @@
+<html>
+<body>
+<script>
+
+// Declaração do vetor com os dias da semana
+const dias = ["dom", "seg", "ter", "qua", "qui", "sex", "sab"];
+
+// SLICE: Extrai uma parte do array sem modificar o original
+// Parâmetros: (índice_inicio, índice_fim+1) -> Pega do índice 1 até o 5
+const dias_uteis = dias.slice(1, 6);
+
+console.log(dias);
+console.log(dias_uteis);
+
+/*
+SAÍDA ESPERADA NO CONSOLE:
+(7) ['dom', 'seg', 'ter', 'qua', 'qui', 'sex', 'sab'] --> Array original intacto
+(5) ['seg', 'ter', 'qua', 'qui', 'sex']              --> Cópia do pedaço extraído
+*/
+</script>
+</body>
+</html>
