@@ -8,17 +8,21 @@
 
 <head>
     <!-- Carrega a biblioteca principal do Google Charts via CDN -->
-    <script type="text/javascript" src="https://gstatic.com"></script>
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <script>
+        // Carrega a biblioteca imediatamente ao abrir a página para evitar travamento local
+        google.charts.load('current', {packages: ['corechart', 'line']});
+    </script>
 </head>
 <body>
     <h1>Google Charts</h1>
     
-    <form>
+    <form onsubmit="return false;">
         <label>Valor de X</label>
-        <!-- Campo de entrada onde o usuário digita o número -->
-        <input type="number" id="v1"/>
+        <!-- Mantemos text para você conseguir digitar os espaços normalmente -->
+        <input type="text" id="v1"/>
         <!-- Link que funciona como botão e dispara a função executar() -->
-        <a href="#" onclick="executar()">Executar</a>
+        <a href="#" onclick="executar(); return false;">Executar</a>
     </form>
 
     <!-- Div container onde o gráfico gerado pelo drawBasic() será desenhado -->
@@ -32,14 +36,11 @@
     <script>
     // Função principal responsável por gerenciar o clique e orquestrar o script externo (Parte 2)
     const executar = () => {
-        // Captura e avalia o valor digitado no campo de texto
-        const x = eval(document.getElementById("v1").value);
+        // Captura a linha de texto digitada (ex: "10 20 30")
+        const inputValor = document.getElementById("v1").value;
         
-        // Adiciona o valor processado ao vetor do arquivo externo
-        addValor(x);
-        
-        // Inicializa a biblioteca do Google Charts carregando os pacotes necessários
-        google.charts.load('current', {packages: ['corechart', 'line']});
+        // Adiciona os valores processados ao vetor do arquivo externo
+        addValor(inputValor);
         
         // Garante a chamada segura da função de desenho assim que a API carregar
         google.charts.setOnLoadCallback(drawBasic);
