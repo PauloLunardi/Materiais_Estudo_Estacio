@@ -1,0 +1,26 @@
+<html>
+<body>
+    <h2>Método concat()</h2>
+    <p id="demo"></p>
+
+<script>
+
+// Arrays iniciais com marcas e carros (adaptado do exemplo do professor)
+const marcasAlemas = ["BMW", "Mercedes"];
+const marcasJaponesas = ["Toyota", "Honda", "Nissan"];
+const marcasAmericanas = ["Ford", "Chevrolet"];
+
+// CONCAT: Junta os vetores em um único novo array, sem alterar os originais
+const todosOsCarros = marcasAlemas.concat(marcasJaponesas, marcasAmericanas);
+
+// Exibe o resultado direto na página HTML
+document.getElementById("demo").innerHTML = todosOsCarros;
+
+/*
+SAÍDA ESPERADA NA TELA:
+BMW,Mercedes,Toyota,Honda,Nissan,Ford,Chevrolet
+*/
+
+</script>
+</body>
+</html>
