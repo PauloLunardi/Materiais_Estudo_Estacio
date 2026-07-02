@@ -20,9 +20,9 @@ const media = () => {
     let soma = 0;
     
     // Percorre cada par [posição, valor] contido na matriz
-    for (x of valores) {
-        // Soma apenas o valor, que está armazenado no índice 1 do par
-        soma += x;
+    for (let x of valores) {
+        // CORREÇÃO CRUCIAL: Adicionado [1] para somar apenas o número, ignorando o índice da posição
+        soma += x[1];
     }
     
     // Divide a soma total pela quantidade de elementos da matriz
