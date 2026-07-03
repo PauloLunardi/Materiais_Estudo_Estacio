@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<CATALOG>
+
+    <CD>
+        <ARTIST>Eminem</ARTIST>
+        <GENRE>Hip Hop</GENRE>
+        <ALBUM>The Marshall Mathers LP</ALBUM>
+    </CD>
+
+    <CD>
+        <ARTIST>Linkin Park</ARTIST>
+        <GENRE>Nu Metal</GENRE>
+        <ALBUM>Meteora</ALBUM>
+    </CD>
+
+    <CD>
+        <ARTIST>Metallica</ARTIST>
+        <GENRE>Heavy Metal</GENRE>
+        <ALBUM>Master of Puppets</ALBUM>
+    </CD>
+
+    <CD>
+        <ARTIST>AC/DC</ARTIST>
+        <GENRE>Hard Rock</GENRE>
+        <ALBUM>Back in Black</ALBUM>
+    </CD>
+
+    <CD>
+        <ARTIST>Guns N' Roses</ARTIST>
+        <GENRE>Hard Rock</GENRE>
+        <ALBUM>Appetite for Destruction</ALBUM>
+    </CD>
+
+    <CD>
+        <ARTIST>Nirvana</ARTIST>
+        <GENRE>Grunge</GENRE>
+        <ALBUM>Nevermind</ALBUM>
+    </CD>
+
+    <CD>
+        <ARTIST>Queen</ARTIST>
+        <GENRE>Rock</GENRE>
+        <ALBUM>A Night at the Opera</ALBUM>
+    </CD>
+
+</CATALOG>
