@@ -1,35 +1,52 @@
-<html>
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <title>Requisição Assíncrona XML</title>
+</head>
 <body>
 
-<p id="demo"></p>
+    <h1>Catálogo de Artistas</h1>
 
-<script>
+    <p id="demo">Carregando...</p>
 
-const xhttp = new XMLHttpRequest();
+    <script>
 
-xhttp.onload = () => {
+        const xhttp = new XMLHttpRequest();
 
-    const xmlDoc = this.responseXML;
+        xhttp.onload = function() {
 
-    const x = xmlDoc.getElementsByTagName("ARTIST");
+            console.log("XML carregado!");
 
-    let txt = "";
+            const xmlDoc = this.responseXML;
 
-    for (let i = 0; i < x.length; i++) {
+            console.log(xmlDoc);
 
-        txt = txt + x[i].childNodes[0].nodeValue + "<br>";
+            const artistas = xmlDoc.getElementsByTagName("ARTIST");
 
-    }
+            console.log(artistas);
 
-    document.getElementById("demo").innerHTML = txt;
+            let txt = "";
 
-}
+            for(let i = 0; i < artistas.length; i++) {
 
-xhttp.open("GET", "cd_catalog.xml");
+                txt += artistas[i].childNodes[0].nodeValue + "<br>";
 
-xhttp.send();
+            }
 
-</script>
+            document.getElementById("demo").innerHTML = txt;
+
+        };
+
+        xhttp.onerror = function() {
+            console.log("Erro ao carregar XML");
+        };
+
+        xhttp.open("GET", "031_Requisicoes_Assincrona_XML.xml");
+
+        xhttp.send();
+
+    </script>
 
 </body>
 </html>
