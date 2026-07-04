@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+    <meta charset="utf-8">
+    <title>Requisição AJAX com JSON</title>
+</head>
+<body>
+
+    <h1>Consulta de Produto</h1>
+
+    <p>
+        Clique no botão para carregar informações de um produto
+        utilizando AJAX e JSON.
+    </p>
+
+    <div id="resultado">
+        Aguardando consulta...
+    </div>
+
+    <br>
+
+    <button onclick="loadRemoteJson()">
+        Carregar Produto
+    </button>
+
+    <script>
+
+        function loadRemoteJson() {
+
+            var url = "https://dummyjson.com/products/1";
+
+            fetch(url, {
+                method: "GET"
+            })
+
+            .then(function(response) {
+
+                return response.json();
+
+            })
+
+            .then(function(data) {
+
+                console.log(data);
+
+                document.getElementById("resultado").innerHTML =
+                    "<strong>ID:</strong> " + data.id + "<br>" +
+                    "<strong>Título:</strong> " + data.title + "<br>" +
+                    "<strong>Descrição:</strong> " + data.description + "<br>" +
+                    "<strong>Preço:</strong> $" + data.price + "<br>" +
+                    "<strong>Avaliação:</strong> " + data.rating + "<br>" +
+                    "<strong>Estoque:</strong> " + data.stock + "<br>" +
+                    "<strong>Marca:</strong> " + data.brand + "<br>" +
+                    "<strong>Categoria:</strong> " + data.category + "<br><br>" +
+
+                    "<img src='" + data.thumbnail + "' width='250'>";
+
+            })
+
+            .catch(function(err) {
+
+                console.error(
+                    "O seguinte erro ocorreu durante a requisição:",
+                    err
+                );
+
+            });
+
+        }
+
+    </script>
+
+</body>
+</html>
