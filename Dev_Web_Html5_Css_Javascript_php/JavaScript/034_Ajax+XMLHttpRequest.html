@@ -1,0 +1,84 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+    <meta charset="utf-8">
+    <title>Requisição XMLHttpRequest</title>
+</head>
+<body>
+
+    <h1>Pokémon Aleatório</h1>
+
+    <p>
+        Clique no botão para carregar um Pokémon utilizando
+        requisições assíncronas com XMLHttpRequest.
+    </p>
+
+    <div id="resultado">
+        Aguardando consulta...
+    </div>
+
+    <br><br>
+
+    <img id="imgPokemon" src="" width="250">
+
+    <br><br>
+
+    <button onclick="carregarPokemon()">
+        Carregar Pokémon
+    </button>
+
+    <script>
+
+        function carregarPokemon() {
+
+            // Pokémon aleatório entre 1 e 1025
+            var id = Math.floor(Math.random() * 1025) + 1;
+
+            var url =
+                "https://pokeapi.co/api/v2/pokemon/" + id;
+
+            var xhr = new XMLHttpRequest();
+
+            xhr.open("GET", url, true);
+
+            xhr.onreadystatechange = function() {
+
+                if (xhr.readyState == 3) {
+
+                    console.log("Carregando conteúdo...");
+
+                }
+
+                if (xhr.readyState == 4 &&
+                    xhr.status == 200) {
+
+                    var jsonResponse =
+                        JSON.parse(xhr.responseText);
+
+                    console.log(jsonResponse);
+
+                    document.getElementById("resultado").innerHTML =
+                        "<strong>Nome:</strong> " +
+                        jsonResponse.name +
+                        "<br>" +
+                        "<strong>Altura:</strong> " +
+                        jsonResponse.height +
+                        "<br>" +
+                        "<strong>Peso:</strong> " +
+                        jsonResponse.weight;
+
+                    document.getElementById("imgPokemon").src =
+                        jsonResponse.sprites.front_default;
+
+                }
+
+            };
+
+            xhr.send();
+
+        }
+
+    </script>
+
+</body>
+</html>
