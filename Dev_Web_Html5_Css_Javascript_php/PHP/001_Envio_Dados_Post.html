@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <title>Formulário POST</title>
+</head>
+<body>
+
+    <h2>Cadastro de Usuário</h2>
+
+    <!--
+        action="welcome.php"
+        Define qual arquivo receberá os dados enviados.
+
+        method="POST"
+        Envia os dados no corpo da requisição HTTP.
+    -->
+    <form action="welcome.php" method="POST">
+
+        <!-- Campo para o nome -->
+        <label>Nome:</label>
+        <input type="text" name="name">
+        <br><br>
+
+        <!-- Campo para o e-mail -->
+        <label>E-mail:</label>
+        <input type="email" name="email">
+        <br><br>
+
+        <!-- Botão de envio -->
+        <input type="submit" value="Enviar">
+
+    </form>
+
+</body>
+</html>
