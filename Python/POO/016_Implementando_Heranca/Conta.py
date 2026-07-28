@@ -34,5 +34,5 @@ class Conta:
 
   def gerar_saldo(self):
     print(f"Conta: {self.numero}")
-    print(f"Saldo: R${self.saldo:10.2f"}
+    print(f"Saldo: R${self.saldo:10.2f}")
                                         
