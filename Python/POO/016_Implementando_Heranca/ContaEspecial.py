@@ -12,7 +12,7 @@ class ContaEspecial(Conta):
 
     def sacar(self, valor):
         if (self.saldo + self.limite) < valor:
-            print(f"Não existe saldo suficiente conta numero {self.numero} cliente {self.clientes.cpf}")
+            print(f"Não existe saldo suficiente conta numero {self.numero} clientes {self.clientes.cpf}")
             return False
         else:
             self.saldo -= valor
