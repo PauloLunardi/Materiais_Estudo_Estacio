@@ -10,4 +10,6 @@ class Conta:
     self.data_abertura = datetime.datetime.today()
     self.extrato = Extrato()
 
-  def depositar(self.valor...
+  def depositar(self.valor):
+    self.saldo += valor
+    self.extrato.transacoes.append([De
