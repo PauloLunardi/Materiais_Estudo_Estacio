@@ -8,4 +8,4 @@ class ContaComum(ContaCliente):
     def calculoRendimento(self):  # (2)
         remuneracao = self.valor_investido * self.taxa_rendimento
         valorIOF = remuneracao * self.IOF
-        self.valor_investido += remuneracao – valorIOF
+        self.valor_investido += remuneracao - valorIOF
