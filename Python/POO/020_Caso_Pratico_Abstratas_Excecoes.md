@@ -33,5 +33,5 @@ Criar uma classe chamada Calculadora que tenha métodos para realizar operaçõe
 
 Os códigos funcionais baseados nas diretrizes e nos roteiros destes laboratórios estão disponíveis nos seguintes arquivos clicáveis:
 
-* [017__Caso_de_Estudo_Veiculos.py](./017__Caso_de_Estudo_Veiculos.py): Contém o desenvolvimento completo do Bloco 1, demonstrando a herança a partir de uma classe base herdeira de `ABC` com decoradores de métodos abstratos.
-* [018__Caso_de_Estudo_Calculadora.py](./018__Caso_de_Estudo_Calculadora.py): Contém o desenvolvimento completo do Bloco 2, aplicando blocos de captura de erro do tipo `TypeError` e `ZeroDivisionError` no processamento aritmético.
+* [020__Caso_de_Estudo_Veiculos.py](./020__Caso_de_Estudo_Veiculos.py): Contém o desenvolvimento completo do Bloco 1, demonstrando a herança a partir de uma classe base herdeira de `ABC` com decoradores de métodos abstratos.
+* [020__Caso_de_Estudo_Calculadora.py](./020__Caso_de_Estudo_Calculadora.py): Contém o desenvolvimento completo do Bloco 2, aplicando blocos de captura de erro do tipo `TypeError` e `ZeroDivisionError` no processamento aritmético.
