@@ -1,131 +1,98 @@
-//======================================================================
-// Desafio: Nivel Novato
+// ============================================================================
+//         PROJETO WAR ESTRUTURADO - DESAFIO DE CÓDIGO
+// ============================================================================
+//        
+// ============================================================================
 //
-// Requisitos funcionais
-// Veja os passos para criar e manipular uma estrutura que representa territórios em um sistema simples.
-// Criação da struct: definir uma struct chamada Territorio com os campos char nome[30], char cor[10] e int tropas.
-// Cadastro dos territórios: o sistema deve permitir que o usuário cadastre cinco territórios informando o nome, cor do exército e o número de tropas de cada um.
-// Exibição dos dados: o sistema deve exibir as informações de todos os territórios registrados após o cadastro.
+// OBJETIVOS:
+// - Modularizar completamente o código em funções especializadas.
+// - Implementar um sistema de missões para um jogador.
+// - Criar uma função para verificar se a missão foi cumprida.
+// - Utilizar passagem por referência (ponteiros) para modificar dados e
+//   passagem por valor/referência constante (const) para apenas ler.
+// - Foco em: Design de software, modularização, const correctness, lógica de jogo.
 //
-// Requisitos não funcionais
-// Inclua também os seguintes critérios para ter um código funcional, eficiente e fácil de entender:
-// Usabilidade: a interface de entrada deve ser simples e clara, com mensagens que orientem o usuário sobre o que digitar.
-// Desempenho: o sistema deve apresentar os dados logo após o cadastro, com tempo de resposta inferior a 2 segundos.
-// Documentação: o código deve conter comentários explicativos sobre a criação da struct, entrada e exibição de dados.
-// Manutenibilidade: os nomes das variáveis e funções devem ser claros e representativos, facilitando a leitura e manutenção do código.
-//
-//======================================================================
+// ============================================================================
 
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h> // para strcspn
+// Inclusão das bibliotecas padrão necessárias para entrada/saída, alocação de memória, manipulação de strings e tempo.
 
-// -- Constantes Globais --
-#define TAM_STRING 30
+// --- Constantes Globais ---
+// Definem valores fixos para o número de territórios, missões e tamanho máximo de strings, facilitando a manutenção.
 
-// -- Definição da estrutura(Struct) --
-struct Territorio {
-    char nome[TAM_STRING];
-    char cor[TAM_STRING];
-    int tropas;
-};
+// --- Estrutura de Dados ---
+// Define a estrutura para um território, contendo seu nome, a cor do exército que o domina e o número de tropas.
 
-// -- Função para limpar o buffer de entrada--
-void limparBufferEntrada() {
-    int c;
-    while ((c = getchar()) != '\n' && c != EOF);
-}
+// --- Protótipos das Funções ---
+// Declarações antecipadas de todas as funções que serão usadas no programa, organizadas por categoria.
+// Funções de setup e gerenciamento de memória:
+// Funções de interface com o usuário:
+// Funções de lógica principal do jogo:
+// Função utilitária:
 
-// -- Função Principal(main) --
+// --- Função Principal (main) ---
+// Função principal que orquestra o fluxo do jogo, chamando as outras funções em ordem.
 int main() {
-    struct Territorio[MAX_LIVROS];
-    int totalLivros = 0;
-    int tro;
+    // 1. Configuração Inicial (Setup):
+    // - Define o locale para português.
+    // - Inicializa a semente para geração de números aleatórios com base no tempo atual.
+    // - Aloca a memória para o mapa do mundo e verifica se a alocação foi bem-sucedida.
+    // - Preenche os territórios com seus dados iniciais (tropas, donos, etc.).
+    // - Define a cor do jogador e sorteia sua missão secreta.
 
-  // -- Laço Principal do Menu --
-    do {
-        // Exibe o menu de opções
-        printf("=================================================\n");
-        printf("---------------Biblioteca - Parte 1--------------\n");
-        printf("1 - Cadastrar novo Livro   ----------------------\n");
-        printf("2 - Listar Todos os Livros ----------------------\n");
-        printf("0 - Sair                   ----------------------\n");
-        printf("-------------------------------------------------\n");
-        printf("Escolha uma Opção   -----------------------------\n");
-    
-        // Lê a opção do usuario.
-        scanf("%d", &opcao);
-        limparBufferEntrada(); // Limpa o '\n' deixado pelo scanf
-    
-        // -- Processamento da Opção --
-        switch (opcao) {
-            case 1: // Cadastro de Livro
-            printf("-- Cadastro de Novo Livro --\n\n");
-    
-                if (totalLivros < MAX_LIVROS) {
-                    printf("Digite o nome do Livro: ");
-                    fgets(biblioteca[totalLivros].nome, TAM_STRING, stdin);
-        
-                    printf("Digite o Autor do Livro: ");
-                    fgets(biblioteca[totalLivros].autor, TAM_STRING, stdin);
-        
-                    printf("Digite a Editora: ");
-                    fgets(biblioteca[totalLivros].editora, TAM_STRING, stdin);
-        
-        			biblioteca[totalLivros].nome[strcspn(biblioteca[totalLivros].nome, "\n")] = '\0';
-        			biblioteca[totalLivros].autor[strcspn(biblioteca[totalLivros].autor, "\n")] = '\0';
-        			biblioteca[totalLivros].editora[strcspn(biblioteca[totalLivros].editora, "\n")] = '\0';
-        
-                    printf("Digite a ediçao: ");
-                    scanf("%d", &biblioteca[totalLivros].edicao);
-                    limparBufferEntrada();
-        
-                    totalLivros++;
-        
-                    printf("\nLivro Cadastrado com Sucesso!\n");
-                } else {
-                    printf("Biblioteca cheia! Não pe possivel cadastrar mais livros.\n");
-                }
-    
-            printf("\nPressicone Enter para continuar...");
-            getchar(); // Pausa para o usuário ler a msg antes de voltar ao menu
-            break;
-    
-            case 2: // Listagem de Livros
-            printf("-- Lista de Livros Cadastrados --\n\n");
-    
-                if(totalLivros == 0) {
-                  printf("Nenhum livro cadastrado ainda.\n");
-        
-                } else {
-                  for (int i = 0; i < totalLivros; i++) {
-                    printf("-----------------------------------\n");
-                    printf("Livro %d\n", i + 1);
-                    printf("Nome: %s\n", biblioteca[i].nome);
-                    printf("Autor: %s\n", biblioteca[i].autor);
-                    printf("Editora: %s\n", biblioteca[i].editora);
-                    printf("Edição: %d\n", biblioteca[i].edicao);
-                  }
-                   printf("-----------------------------------------\n");
-                }
-        
-        				// A pausa é crucial apra que o usuário veja a lista antes do proximo loop limpar a tela.
-        				printf("\nPressione Enter para continuar...");
-        				getchar();
-        				break;
-    
-            case 0: // Sair
-    				printf("\nSaindo do Sistema...\n");
-    				break;
-    
-    		default: // Opção invalida
-    			printf("\nOpção Invalida! Tente Novamente.\n");
-    			printf("\nOPressione Enter para continuar.\n");
-    			getchar();
-    			break;
-    			
-        }
-    } while (opcao != 0);
-    
+    // 2. Laço Principal do Jogo (Game Loop):
+    // - Roda em um loop 'do-while' que continua até o jogador sair (opção 0) ou vencer.
+    // - A cada iteração, exibe o mapa, a missão e o menu de ações.
+    // - Lê a escolha do jogador e usa um 'switch' para chamar a função apropriada:
+    //   - Opção 1: Inicia a fase de ataque.
+    //   - Opção 2: Verifica se a condição de vitória foi alcançada e informa o jogador.
+    //   - Opção 0: Encerra o jogo.
+    // - Pausa a execução para que o jogador possa ler os resultados antes da próxima rodada.
+
+    // 3. Limpeza:
+    // - Ao final do jogo, libera a memória alocada para o mapa para evitar vazamentos de memória.
+
     return 0;
 }
+
+// --- Implementação das Funções ---
+
+// alocarMapa():
+// Aloca dinamicamente a memória para o vetor de territórios usando calloc.
+// Retorna um ponteiro para a memória alocada ou NULL em caso de falha.
+
+// inicializarTerritorios():
+// Preenche os dados iniciais de cada território no mapa (nome, cor do exército, número de tropas).
+// Esta função modifica o mapa passado por referência (ponteiro).
+
+// liberarMemoria():
+// Libera a memória previamente alocada para o mapa usando free.
+
+// exibirMenuPrincipal():
+// Imprime na tela o menu de ações disponíveis para o jogador.
+
+// exibirMapa():
+// Mostra o estado atual de todos os territórios no mapa, formatado como uma tabela.
+// Usa 'const' para garantir que a função apenas leia os dados do mapa, sem modificá-los.
+
+// exibirMissao():
+// Exibe a descrição da missão atual do jogador com base no ID da missão sorteada.
+
+// faseDeAtaque():
+// Gerencia a interface para a ação de ataque, solicitando ao jogador os territórios de origem e destino.
+// Chama a função simularAtaque() para executar a lógica da batalha.
+
+// simularAtaque():
+// Executa a lógica de uma batalha entre dois territórios.
+// Realiza validações, rola os dados, compara os resultados e atualiza o número de tropas.
+// Se um território for conquistado, atualiza seu dono e move uma tropa.
+
+// sortearMissao():
+// Sorteia e retorna um ID de missão aleatório para o jogador.
+
+// verificarVitoria():
+// Verifica se o jogador cumpriu os requisitos de sua missão atual.
+// Implementa a lógica para cada tipo de missão (destruir um exército ou conquistar um número de territórios).
+// Retorna 1 (verdadeiro) se a missão foi cumprida, e 0 (falso) caso contrário.
+
+// limparBufferEntrada():
+// Função utilitária para limpar o buffer de entrada do teclado (stdin), evitando problemas com leituras consecutivas de scanf e getchar.
