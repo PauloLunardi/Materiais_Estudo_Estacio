@@ -1,4 +1,4 @@
-# 💾 Nível Aventureiro: Alocação e Desalocação Dinâmica de Memória (malloc, calloc e free)
+# 💾 Alocação e Desalocação Dinâmica de Memória (malloc, calloc e free)
 
 Este documento aborda os conceitos essenciais de gerenciamento dinâmico de memória na linguagem C. Compreender como a memória é utilizada, alocada e liberada é fundamental para construir sistemas eficientes, estáveis e evitar problemas graves como vazamentos de memória (*memory leaks*), especialmente em projetos estruturados e jogos de grande porte (como o War Estruturado).
 
@@ -8,11 +8,11 @@ Este documento aborda os conceitos essenciais de gerenciamento dinâmico de mem�
 
 A memória do computador armazena temporariamente os dados e instruções de um programa durante sua execução. Em C, o gerenciamento de memória se divide em duas categorias principais:
 
-### 📌 Alocação Estática (ou Automática)
+###  Alocação Estática (ou Automática)
 Ocorre quando declaramos uma variável comum ou um vetor com tamanho fixo direto no código (Ex: `int x = 10;` ou `Territorio mapa[5];`). 
 * **Características:** O compilador reserva um espaço fixo na memória automaticamente. Essa alocação acontece no início da execução (na pilha de memória ou *Stack*) e o tamanho deve ser conhecido antes do programa rodar.
 
-### ⚡ Alocação Dinâmica
+###  Alocação Dinâmica
 É necessária quando não sabemos com antecedência quanto espaço será preciso (Ex: quando o usuário escolhe quantos territórios quer criar em tempo de execução). 
 * **Características:** O programa solicita blocos de memória diretamente ao sistema operacional durante a execução (em uma área chamada *Heap*). O desenvolvedor ganha total flexibilidade, mas assume a responsabilidade manual de solicitar e liberar esse espaço.
 
