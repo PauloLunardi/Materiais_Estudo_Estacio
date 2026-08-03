@@ -1,4 +1,4 @@
-# ⚔️ Nível Aventureiro: Conceito e Manipulação de Ponteiros em C
+# Conceito e Manipulação de Ponteiros em C
 
 Este documento apresenta os conceitos fundamentais sobre ponteiros na linguagem C, explicando como eles armazenam endereços de memória e permitem acessar ou modificar dados diretamente. Também são abordados cenários práticos de uso, como passagem por referência e manipulação de estruturas direcionadas ao desenvolvimento de jogos de estratégia (como o War Estruturado).
 
@@ -8,7 +8,7 @@ Este documento apresenta os conceitos fundamentais sobre ponteiros na linguagem 
 
 Na linguagem C, um **ponteiro** é uma variável especial que armazena o **endereço de memória** de outra variável. Em vez de guardar um valor direto (como o número `10` ou o caractere `'A'`), o ponteiro guarda a localização exata de onde esse valor está guardado na memória física do computador.
 
-### 🏠 Analogia 1: O Endereço de uma Casa
+###  Analogia 1: O Endereço de uma Casa
 Imagine o endereço da sua casa. Ele não é a casa em si, mas indica onde ela está localizada. Com o endereço em mãos, você pode:
 * Ir até a casa.
 * Ver o que tem dentro dela.
@@ -16,7 +16,7 @@ Imagine o endereço da sua casa. Ele não é a casa em si, mas indica onde ela e
 
 Se você quer convidar um amigo para sua casa, você não precisa levar a casa física até ele; basta enviar o endereço. O ponteiro funciona da mesma forma com as variáveis: ele leva o programa até onde o dado real está guardado.
 
-### ✉️ Analogia 2: O Cartão de Endereço Postal
+###  Analogia 2: O Cartão de Endereço Postal
 Pense em um cartão com o número de uma caixa de correio. O cartão não contém a encomenda física, mas indica exatamente qual gaveta deve ser aberta. Ao ler o cartão (o endereço), você vai direto ao local certo e gerencia o pacote.
 
 ---
