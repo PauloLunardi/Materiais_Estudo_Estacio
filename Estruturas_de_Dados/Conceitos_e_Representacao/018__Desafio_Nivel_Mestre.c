@@ -1,14 +1,23 @@
 // ============================================================================
 //         PROJETO WAR ESTRUTURADO - DESAFIO FINAL (NÍVEL MESTRE)
 // ============================================================================
-// OBJETIVOS CUMPRIDOS:
-// - Criação do vetor de missões estratégicas (mínimo 5).
-// - Alocação dinâmica do mapa (calloc) e da string de missão (malloc).
-// - Função atribuirMissao utilizando cópia por referência (strcpy).
-// - Função de ataque por ponteiros com simulação de dados (rand() % 6 + 1).
-// - Função de verificação silenciosa e condicional de vitória.
-// - Liberação manual obrigatória de toda a memória (free).
+// OBJETIVOS CUMPRIDOS (CONFORME REQUISITOS TÉCNICOS DA DOCUMENTAÇÃO):
+//
+// [REQUISITOS FUNCIONAIS]
+// - Criação do vetor de missões: banco estático com 5 descrições estratégicas.
+// - Sorteio da missão: função void atribuirMissao utilizando cópia com strcpy.
+// - Armazenamento e acesso: string de missão alocada dinamicamente via malloc.
+// - Verificação da missão: função int verificarMissao com varredura por strstr.
+// - Exibição condicional: checagem ao fim de cada turno para declarar vencedor.
+//
+// [REQUISITOS NÃO FUNCIONAIS E ADICIONAIS]
+// - Modularização: código dividido rigidamente entre main, ataque e missões.
+// - Uso de ponteiros: todas as manipulações de structs feitas por referência.
+// - Gerenciamento de memória: liberação obrigatória via free (limpeza do Heap).
+// - Interface intuitiva (UX): missão exibida apenas no início da partida.
+// - Validação de fronteiras: travas de segurança contra fogo amigo e limites.
 // ============================================================================
+
 
 #include <stdio.h>
 #include <stdlib.h>
