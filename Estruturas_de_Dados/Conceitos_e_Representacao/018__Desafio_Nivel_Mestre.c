@@ -19,3 +19,4 @@ fase de ataque
 --- resultado da batalha ---
   Ataque(europa):4 | Defesa (america): 5
   VITORIA DA DEFESA! O atacante perdeu 1 tropa.
+*/
