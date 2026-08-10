@@ -21,15 +21,15 @@
 typedef struct {
   char dados[TAM_MAX][MAX_STR_LEN]; // MATRIZ: 10 LINHAS(Itens), 50 colunas(caracteres por item)
   int quantidade; // Este é o nosso contador de controle. Ele informa quantos itens estão realmente armazenados na lista.
-} ListaEstática;
+} ListaEstatica;
 
 // Funções da Lista Estática
 
 // Esta função prepara a lista para ser usada.
 // Ela simplesmente define o contador quantidade como 0, indicando que a lista está vazia.
 // Recebemos um ponteiro (*lista) para modificar a variavel original passada para a função.
+void limparBufferEntrada();
 void inicializarListaEstatica(ListaEstatica *lista);
-
 void inserirListaEstatica(ListaEstatica *lista, const char* texto);
 void removerListaEstatica(ListaEstatica *lista, const char* texto);
 void listarListaEstatica(const ListaEstatica *lista);
@@ -53,7 +53,7 @@ typedef struct No {
 
 // "Atalho", em vez de escrever No* sempre-que quisermos nos referir á nossa lista, podemos simplesmenteusadr...
 // A "lista" em si é apenas um ponteiro para o primeiro nó (a "cabeça" da lista)
-typedef No* ListaEncadeada
+typedef No* ListaEncadeada;
 
 // Funções da Lista Encadeada
 
@@ -62,43 +62,69 @@ typedef No* ListaEncadeada
 void inicializarListaEncadeada(ListaEncadeada *lista);
 
 void inserirListaEncadeada(ListaEncadeada *lista, const char* texto);
-void removerListaEncadeada(ListaEncadeada *lista, const chat* texto);
+void removerListaEncadeada(ListaEncadeada *lista, const char* texto);
 void listarListaEncadeada(const ListaEncadeada lista);
 void liberarListaEncadeada(ListaEncadeada *lista); // Função para limpar a memória.
 
 
 //------------------------------------------------------------------------
-// Função Principal (main) E Menus
 
-void menuListaEstatica();
-void menuListaEncadeada();
+
+// --- Função Principal (main) E Menus ---
+void menuListaEstatica(ListaEstatica *lista);
+void menuListaEncadeada(ListaEncadeada *lista);
 
 int main() {
-  int opcao;
-  do {
-    printf("\n-- Manipulação de Listas (Texto) --\n");
-    printf("1. Lista Estatica --\n");
-    printf("2. Lista Encadeada --\n");
-    printf("0. Sair do Programa --\n");
-    printf("Escolha uma opção: --\n");
-    scanf("%d", &opcao);
+    int opcao;
+    
+    // CORREÇÃO 1: Declarar as duas listas aqui dentro da main
+    ListaEstatica minha_estatica;
+    ListaEncadeada minha_encadeada;
+    
+    // Inicializar as listas antes de começar o jogo
+    inicializarListaEstatica(&minha_estatica);
+    inicializarListaEncadeada(&minha_encadeada);
 
-    switch(opcao) {
-      case 1:
-        menuListaEstatica();
-        break;
-      case 2:
-        menuListaEncadeada();
-        break;
-      case 0:
-        printf("Saindo...\n");
-        break;
-      default:
-        printf("Opção Invalida...\n");
-    }
-  } while (opcao != 0);
-return 0;
+    do {
+        printf("\n-- Manipulação de Listas (Texto) --\n");
+        printf("1. Lista Estatica\n");
+        printf("2. Lista Encadeada\n");
+        printf("0. Sair do Programa\n");
+        printf("Escolha uma opção: ");
+        scanf("%d", &opcao);
+        
+        limparBufferEntrada(); // CORREÇÃO 2: Limpa o Enter para o próximo menu não bugar
+
+        switch(opcao) {
+            case 1: 
+                // Passa o endereço da lista estática para o menu trabalhar nela
+                menuListaEstatica(&minha_estatica); 
+                break;
+            case 2: 
+                // Passa o endereço da lista encadeada para o menu trabalhar nela
+                menuListaEncadeada(&minha_encadeada); 
+                break;
+            case 0: 
+                printf("Saindo...\n"); 
+                break;
+            default: 
+                printf("Opção Invalida...\n");
+        }
+    } while (opcao != 0);
+
+    // Libera a memória da lista encadeada ao fechar o programa definitivamente
+    liberarListaEncadeada(&minha_encadeada);
+    return 0;
 }
+
+
+//------------------------------------------------------------------------
+// -- Função para limpar o buffer de entrada --
+void limparBufferEntrada() {
+    int c;
+    while ((c = getchar()) != '\n' && c != EOF);
+}
+
 
 //------------------------------------------------------------------------
 // Implementação das Funções - Lista Estatica
@@ -121,7 +147,7 @@ void inserirListaEstatica(ListaEstatica *lista, const char* texto) {
   strcpy(lista->dados[lista->quantidade], texto);
   // Após a cópia, lista->quantidade é incremento, pois agora temos mais um item na lista.
   lista->quantidade++;
-  printf("Texto \"%s\" Inserido com Sucesso.\n" texto);
+  printf("Texto \"%s\" Inserido com Sucesso.\n", texto);
 }
 
 void removerListaEstatica(ListaEstatica *lista, const char* texto) {
@@ -130,7 +156,7 @@ void removerListaEstatica(ListaEstatica *lista, const char* texto) {
   // A função percorre os itens em usao na lista (de 0 até quantidade).
   // Para comparar strings, usamos strcmp(string1, string2).
   for (i = 0; i < lista->quantidade; i++) {
-    if (strcmp(lista->dados[i], texto) == o) {
+    if (strcmp(lista->dados[i], texto) == 0) {
       pos = i;
       break;
     }
@@ -138,7 +164,7 @@ void removerListaEstatica(ListaEstatica *lista, const char* texto) {
 
   // Tratamento de Erro: Se o loop terminar e pos continuar -1, o item não foi encontrado.
   if (pos == -1) {
-    print("Erro: Texto \"%s\" Não encontrado na lista.\n", texto);
+    printf("Erro: Texto \"%s\" Não encontrado na lista.\n", texto);
     return;
   }
 
@@ -193,7 +219,7 @@ void inserirListaEncadeada(ListaEncadeada *lista, const char* texto) {
   // Alocação da String: malloc(strlen(texto) + 1) aloca memória para o texto.
   // strlen conta os caracteres, e o +1 é viotal para o caractere nulo (\0) que finaliza toda string em C.
   // novoNo->dado agora aponta para este espaço.
-  novoNo->dado = (chgar*) malloc(strclen(texto) + 1);
+  novoNo->dado = (char*) malloc(strlen(texto) + 1);
 
   if (novoNo->dado == NULL) {
     printf("Erro: Falha na alocação de memória para o texto.\n");
@@ -255,7 +281,7 @@ void listarListaEncadeada(const ListaEncadeada lista) {
     printf("A lista encadeada esta vazia.\n");
   }
   printf("Itens da Lista Encadeada: [ ");
-  while (temp != NULL)
+  while (temp != NULL) {
     printf("\"%s\" ", temp->dado); // Usando o S para impressao de strings
     temp = temp->proximo;
   }
@@ -271,5 +297,86 @@ void liberarListaEncadeada(ListaEncadeada *lista) {
   while (atual != NULL) {
     proximo = atual->proximo;
     free(atual->dado); // Libera a string
-    free(atual; // Libera o nó
-    
+    free(atual); // Libera o nó
+    atual = proximo;
+  }
+  *lista = NULL; 
+  printf("Memória de toda a lista encadeada liberada.\n");
+}  
+
+//------------------------------------------------------------------------
+// PARTE 3: Implementação dos Menus de Interface
+
+void menuListaEstatica(ListaEstatica *lista) {
+    int op;
+    char buffer[MAX_STR_LEN];
+    do {
+        printf("\n--- MENU LISTA ESTÁTICA ---\n");
+        printf("1. Inserir Texto\n");
+        printf("2. Remover Texto\n");
+        printf("3. Listar Elementos\n");
+        printf("0. Voltar ao Menu Principal\n");
+        printf("Escolha uma opção: ");
+        scanf("%d", &op);
+        getchar(); // Limpa o caractere de enter (\n) do buffer do teclado
+
+        switch(op) {
+            case 1:
+                printf("Digite o texto para inserir: ");
+                fgets(buffer, MAX_STR_LEN, stdin);
+                buffer[strcspn(buffer, "\n")] = '\0';
+                inserirListaEstatica(lista, buffer);
+                break;
+            case 2:
+                printf("Digite o texto para remover: ");
+                fgets(buffer, MAX_STR_LEN, stdin);
+                buffer[strcspn(buffer, "\n")] = '\0';
+                removerListaEstatica(lista, buffer);
+                break;
+            case 3:
+                listarListaEstatica(lista);
+                break;
+            case 0:
+                break;
+            default:
+                printf("Opção Inválida.\n");
+        }
+    } while(op != 0);
+}
+
+void menuListaEncadeada(ListaEncadeada *lista) {
+    int op;
+    char buffer[MAX_STR_LEN];
+    do {
+        printf("\n--- MENU LISTA ENCADEADA ---\n");
+        printf("1. Inserir Texto (No Inicio)\n");
+        printf("2. Remover Texto\n");
+        printf("3. Listar Elementos\n");
+        printf("0. Voltar ao Menu Principal\n");
+        printf("Escolha uma opção: ");
+        scanf("%d", &op);
+        getchar(); // Limpa o caractere de enter (\n) do buffer do teclado
+
+        switch(op) {
+            case 1:
+                printf("Digite o texto para inserir: ");
+                fgets(buffer, MAX_STR_LEN, stdin);
+                buffer[strcspn(buffer, "\n")] = '\0';
+                inserirListaEncadeada(lista, buffer);
+                break;
+            case 2:
+                printf("Digite o texto para remover: ");
+                fgets(buffer, MAX_STR_LEN, stdin);
+                buffer[strcspn(buffer, "\n")] = '\0';
+                removerListaEncadeada(lista, buffer);
+                break;
+            case 3:
+                listarListaEncadeada(*lista);
+                break;
+            case 0:
+                break;
+            default:
+                printf("Opção Inválida.\n");
+        }
+    } while(op != 0);
+}
