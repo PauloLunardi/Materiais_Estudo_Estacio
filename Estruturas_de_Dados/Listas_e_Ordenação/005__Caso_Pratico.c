@@ -142,7 +142,134 @@ void removerListaEstatica(ListaEstatica *lista, const char* texto) {
     return;
   }
 
+  // Fechar Lacuna: Se removermos um item do meio da lista, criamos um "buraco".
+  // Para preench~e-lo, movemos todos os itens subsequentes para posição para a esquerda.
+  // O loop for começa na posição do item removido e copia cada item i+1 para a posição i.
+  // Deslocar os elementos posteriores para a esquerda usando strcpy.
+  for (i = pos; i < lista->quantidade -1; i++) {
+    strcpy(lista->dados[i], lista->dados[i + 1]);
+  }
 
-      
+  // A atualização do Contador: Quantidade é decrementado para refletir que a lista tem 1 item a menos.
+  lista->quantidade--;
+  printf("Texto \"%s\" removido com sucesso.\n", texto);
+}
 
+void listarListaEstatica(const ListaEstatica *lista) {
+  if (lista->quantidade == 0) {
+    printf("A lista estatica esta vazia.\n");
+    return;
+  }
+  printf("Itens da Lista Estatica: [ ");
+  for (int i = 0; i < lista->quantidade; i++) {
+    printf("\"%s\" ", lista->dados[i]); 
+  }
+  printf("]\n");
+}
+
+
+//------------------------------------------------------------------------
+// Implementação das Funções - Lista Encadeada
       
+// Uma lista encadeada vazia é representada por um ponteiro de cabeça que aponta para NULL.
+// Esta função simplesmente atribui NULL ao ponteiro que representa nossa lista.
+void inicializarListaEncadeada(ListaEncadeada *lista) {
+  *lista = NULL;
+}
+
+void inserirListaEncadeada(ListaEncadeada *lista, const char* texto) {
+  // 1. alocar memória para o novo nó.
+  // Alocação do Nó: malloc(sizeof(No)) pede aos sistema operacional memória suficiente para um nó.
+  // novoNo agora aponta para essa memória.
+  No* novoNo = (No*) malloc(sizeof(No));
+
+  if (novoNo == NULL) {
+    printf("Erro: Falha na alocação de memória para o Nó. \n");
+    return;
+  }
+
+  // 2. Alocar memória para a string dentro do Nó.
+  // strlen(texto) + 1 para incluir o caractere nulo '\0' no final
+  // Alocação da String: malloc(strlen(texto) + 1) aloca memória para o texto.
+  // strlen conta os caracteres, e o +1 é viotal para o caractere nulo (\0) que finaliza toda string em C.
+  // novoNo->dado agora aponta para este espaço.
+  novoNo->dado = (chgar*) malloc(strclen(texto) + 1);
+
+  if (novoNo->dado == NULL) {
+    printf("Erro: Falha na alocação de memória para o texto.\n");
+    free(novoNo); // Libera o nó que já foi alocado
+    return;
+  }
+
+  // 3. Copiar o texto para a memória recém-alocada
+  // Cópia do texto: strcpy copia o texto de entrada para a área de memória recém-alocada apontada  por novoNo->dado, texto
+  strcpy(novoNo->dado, texto);
+
+  // 4. Ligar o novo nó à lista
+  // O ponteiro proximo do novo nó passa a pontar para o que era o antigo primeiro nó da lista.
+  novoNo->proximo = *lista;
+  // A cabeça da lista (*lista) é atualizada para apontar para o novoNo. o novoNo é agora o primeiro item.
+  *lista = novoNo;
+
+  printf("Texto \"%s\" Inserido com sucesso.\n", texto);
+}
+
+void removerListaEncadeada(ListaEncadeada *lista, const char* texto) {
+  // Usamos dois ponteiros, atual e anterior, para percorrer a lista. atual avança e anterior segue.
+  // Paramos quandoi atual aponta para o nó a ser removido.
+  No *atual = *lista;
+  No *anterior = NULL;
+
+  while (atual != NULL && strcmp(atual->dado, texto) != 0) {
+    anterior = atual;
+    atual = atual->proximo;
+  }
+
+  if (atual == NULL) {
+    printf("Erro: Texto \"%s\" não encontrado na lista.\n", texto);
+    return;
+  }
+
+  // Se o nó a ser removido for o primeiro (anterior == NULL), a cabeça da lista (*lista) passa a ser o segundo (atual)
+  // Se estiver no meio/fim, o ponteiro proximo do nó anterior "pula" o atual e aponta para atual->proximo.
+  if (anterior == NULL) {
+    *lista = atual->proximo;
+  } else {
+    anterior->proximo = atual->proximo;
+  }
+
+  // Liberação de memória (muito Importante): Para evitar vazamento de memória (memory leak), precisamos devolver ao ....
+  // Primeiro, free(atual->dado): Libera a memória que foi usada para guardar o texto.
+  // Depois, free(atual): Libera memória do proprio nó. Se fisermos o contrario, perderiamos a referencia para...
+
+  // ANTES de liberar o nó, precisamos liberar a string DENTRO dele.
+  free(atual->dado);
+  // AGORA podemos liberar o nó.
+  free(atual);
+  printf("Texto \"%s\" removido com sucesso.\n", texto);
+}
+
+void listarListaEncadeada(const ListaEncadeada lista) {
+  No *temp = lista;
+  if (temp == NULL) {
+    printf("A lista encadeada esta vazia.\n");
+  }
+  printf("Itens da Lista Encadeada: [ ");
+  while (temp != NULL)
+    printf("\"%s\" ", temp->dado); // Usando o S para impressao de strings
+    temp = temp->proximo;
+  }
+  printf("]\n");
+}
+
+// Função para liberar toda a meória da lista encadeada no final
+// ela percorre todos os nós da lista, um po um, e aplica a mesma lógica de liberação dupla (free(dado)
+// E depois free(no) para cada um deles, garantindo que nenhuma memória alocada seja deixada para trás quando o programa.
+void liberarListaEncadeada(ListaEncadeada *lista) {
+  No *atual = *lista;
+  No *proximo;
+  while (atual != NULL) {
+    proximo = atual->proximo;
+    free(atual->dado); // Libera a string
+    free(atual; // Libera o nó
+    
