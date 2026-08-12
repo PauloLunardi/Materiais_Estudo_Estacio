@@ -71,7 +71,7 @@ int main() {
   // --- Testando a busca Binaria ---
   printf("--- 1. Busca Binaria (Requer lista ordenada) ---");
   // a) Versao Iterativa
-  int res5 = buscaBinarialIterativa(listaDeCompras, tamanhoDaLista, itemExistente);
+  int res5 = buscaBinariaIterativa(listaDeCompras, tamanhoDaLista, itemExistente);
   imprimirResultado("Binaria Iterativa", itemExistente, res5);
 
   int res6 = buscaBinariaIterativa(listaDeCompras, tamanhoDaLista, itemInexistente);
@@ -144,7 +144,7 @@ int buscaSequencialRecursiva_aux(const char* lista[], int tamanho, const char* i
 
   // Caso Base 2: Sucesso
   // Compara o item na posiçao ' indice' atual com o item procurado.
-  if (strcpm(lista[indice], item) == 0) {
+  if (strcmp(lista[indice], item) == 0) {
     return indice; // Item encontrado! Retorna o indice.
   }
 
@@ -153,6 +153,114 @@ int buscaSequencialRecursiva_aux(const char* lista[], int tamanho, const char* i
   // Chamamos a função novamente, mas agora para o proximo indice (indice + 1).
   // O retorno desta chamada sera propagado para a chamada anterior.
   return buscaSequencialRecursiva_aux(lista, tamanho, item, indice + 1);
+}
 
-... 10.26 minutos
+// =======================================================================
+// 2 Busca Binaria
+// =======================================================================
+// Algoritimo de "dividir para conquistar".
+// A cada passo, ele olha o elemento do meio da lista (ou sub-lista).
+// Se o item do meio for o procurado, a busca termina.
+// Se o item procurado for menor, ele descarta a metade direita e busca na esquerda.
+// Se for maior, descart a metade esquerda e busca na direita.
+// Requer que a lista esteja ORDENADA.
+// =======================================================================
 
+/**
+  * @brief Busca binaria usando um laço (iteracao).
+  * @return O indice do item se encontrando, ou -1 caso contrario.
+  */
+int buscaBinariaIterativa(const char* lista[], int tamanho, const char* item) {
+  int inicio = 0;
+  int fim = tamanho - 1;
+  int meio;
+
+  // O laço continua a sub-lista for valida (inicio não ultrapassou o fim).
+  while (inicio <= fim) {
+    // Calcula o indice do meio.
+    // Usar inicio + (fim - inicio) / 2 evita overflow para listas muito grandes.
+    meio = inicio + (fim - inicio) / 2;
+
+    // Compara a string do meio com o item procurado.
+    int comparacao = strcmp(lista[meio], item);
+
+    if (comparacao == 0) { // Encontrou!
+      return meio;
+    }
+    else if (comparacao > 0) {
+      // O item do meio vem DEPOIS do item procurado (ex: "leite" > "feijao").
+      // Portanto, o item só pode estar na metade esquerda.
+      // Descartamos a metade direita, ajustando o 'fim'.
+      fim = meio - 1;
+    }
+    else { // comparacao < 0
+      // O item do meio vem ANTES do item procurado (ex: "leite" < "sal").
+      // Portanto, o item só pode estar na metade direita.
+      // Descartamos a metade esquerda, ajustando o 'inicio'.
+      fim = meio + 1;
+    }
+  }
+
+  // Se o laço 'while' terminar, significa que 'inicio' ultrapassou 'fim',
+  // O espeço de busca se esgotou e o item não foi encontrado.
+  return -1;
+}
+
+/**
+  * @brief Funcção "involucro" (wrapper) para a busca binaria recursiva.
+*/
+int buscaBinariaRecursiva(const char* lista[], int tamanho, const char* item) {
+  // inicia a busca recursiva em toda lista, do indice 0 até 'tamanho - 1'.
+  return buscaBinariaRecursiva_aux(lista, item, 0, tamanho - 1);
+}
+
+/**
+  * @brief Função auxiliar que implementa a logica recursiva da busca binaria.
+  * @param inicio O indice inicial da sub-lista atual.
+  * @param fim O indice final da sub-lista atual.
+  * @return O indice do item se encontrado, ou -1 caso contrario.
+  */
+int buscaBinariaRecursiva_aux(const char* lista[], const char* item, int inicio, int fim) {
+  // Caso Base 1: Falha (espaço de busca invalido)
+  // Se o 'inicio' ultrapassar o 'fim', a sub-lista é vazia, o item não esta aqui.
+  if (inicio > fim) {
+    return -1;
+  }
+
+  // Passo Recursivo e Caso Base de Sucesso
+  int meio = inicio + (fim - inicio) / 2;
+  int comparacao = strcmp(lista[meio], item);
+
+  if (comparacao == 0) {
+    // Caso Base 2: Sucesso
+    return meio; // Encontramos o item!
+  }
+  else if (comparacao > 0) {
+    // O item esta na metade esquerda.
+    // Chamamos a função novamente, mas com um novo 'fim'.
+    return buscaBinariaRecursiva_aux(lista, item, inicio, meio - 1);
+  }
+  else { //comparacao < 0
+    // O item esta na metade direita.
+    // Chamamos a função novamente, mas como um novo 'inicio'.
+    return buscaBinariaRecursiva_aux(lista, item, meio + 1, fim);
+  }
+}
+
+// =======================================================================
+// Funcao Auxiliar de Impressao
+// =======================================================================
+/**
+  * @brief formata e imprime o resultado de uma busca.
+  * @param nomeDaBusca O nome do algoritimo utilizada..
+  * @param item O item que foi procurado.
+  * @return resultado O resultado da busca (indice ou -1)..
+  */
+void imprimirResultado(const char* nomeDaBusca, const char* item, int resultado) {
+  printf("[%s] Buscado por \"%s\"... \n", nomeDaBusca, item);
+  if (resultado != -1) {
+    printf("  -> Resultado: Item encontrado no indice %d.\n", resultado);
+  } else {
+    printf("  -> Resultado: Item nao encontrado na lista.\n");
+  }
+}
