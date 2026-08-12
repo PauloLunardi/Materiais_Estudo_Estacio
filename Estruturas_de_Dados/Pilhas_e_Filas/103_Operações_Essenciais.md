@@ -15,6 +15,8 @@ A operação de inserção consiste em posicionar um novo elemento estritamente 
 > **Resumo:** Inserir adiciona um novo item na última posição da fila, respeitando a capacidade máxima do vetor e mantendo a ordem sequencial de entrada.
 
 ### Implementação Base em C
+
+#### Exemplo 1
 ```c
 void enqueue(Fila *f, int valor) {
     // Validação obrigatória: impede o estouro da capacidade máxima
@@ -32,6 +34,15 @@ void enqueue(Fila *f, int valor) {
     printf("Elemento %d inserido no final da fila.\n", valor);
 }
 ```
+#### Exemplo 2
+```c
+void inserir(fila *f, Elemento e) {
+    if (filaCheia(f)) // Impede a inserção se estiver cheia
+        return;
+    f->itens[f->fim] = e; // Insere no final
+    f->fim = (f->fim + 1) % MAX;
+    f->total++; // Incrementa a contagem
+```
 
 ---
 
@@ -46,6 +57,8 @@ A operação de remoção consiste em eliminar o elemento mais antigo da estrutu
 > **Resumo:** Retirar exclui o primeiro item da fila (o que estava há mais tempo esperando) e atualiza os índices de controle diretos de forma segura.
 
 ### Implementação Base em C
+
+#### Exemplo 1
 ```c
 int dequeue(Fila *f) {
     // Validação obrigatória: impede o acesso a regiões vazias ou inválidas
@@ -67,6 +80,19 @@ int dequeue(Fila *f) {
 }
 ```
 
+#### Exemplo 2
+```c
+Elemento retirar(Fila *f) {
+    Elemento vazio = {-1}; // valor para fila vazia
+    if (filaVazia(f))
+        return vazio; // evita executar caso vazia
+    Elemento e = f->itens[f->inicio]; Armazena o item a ser removido
+    f->inicio = (f->inicio + 1) % MAX;
+    f->total--; // Diminui o total
+    return e; // Retorna o item removido
+}
+```
+
 ---
 
 ## 3. Verificar Sem Remoção (Peek / Espiar)
@@ -79,6 +105,8 @@ A função limita-se a ler o valor armazenado na posição do índice `inicio` c
 > **Resumo:** Espiar acessa e retorna as informações do primeiro item da fila sem alterar nenhum índice, sendo ideal para auditorias visuais ou checagens condicionais rápidas.
 
 ### Implementação Base em C
+
+#### Exemplo 1
 ```c
 int peek(const Fila *f) {
     // Validação de segurança: não é possível espiar uma estrutura vazia
@@ -89,6 +117,16 @@ int peek(const Fila *f) {
 
     // Apenas retorna o valor da frente sem modificar f->inicio ou f->total
     return f->dados[f->inicio];
+}
+```
+
+#### Exemplo 2
+```c
+Elemento espiar(Fila *f) {
+    Elemento vazio = {-1}; // valor padrão se a fila estiver vazia
+    if (filavazia(f))
+        return vazio; // Impede acesso indevido
+    return f->itens[f->inicio]; // Retorna o elemento da frente
 }
 ```
 
