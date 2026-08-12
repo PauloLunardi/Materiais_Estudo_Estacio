@@ -16,7 +16,7 @@ typedef struct {
 } Fila;
 
 void inicializarFila(Fila *f) {
-  f->inicio = ;
+  f->inicio = 0;
   f->fim = 0;
   f->total = 0;;
 }
@@ -40,7 +40,7 @@ void inserir(Fila *f, Pessoa p) {
   f->total++;
 }
 
-void remover(Fila *f, Pessoa p) {
+void remover(Fila *f, Pessoa *p) {
   if (filaVazia(f)) {
     printf("Fila vazia, não é possivel remover!\n");
     return;
@@ -48,7 +48,7 @@ void remover(Fila *f, Pessoa p) {
 
   *p = f->itens[f->inicio];
   f->inicio = (f->inicio + 1) % MAX;
-  f->total==;
+  f->total--;
 }
 
 // Função de Ixibição
@@ -59,7 +59,7 @@ void mostrarFila(Fila *f) {
     printf("[%s, %d] ", f->itens[idx].nome, f->itens[idx].idade);
   }
 
-  printf("\n"):
+  printf("\n");
 }
 
 
@@ -74,15 +74,17 @@ int main() {
   inserir(&f, p1);
   inserir(&f, p2);
 
-  mostrarFila(&f);// mostra  a fila antes da remoção
-  
-  // Remove uma pessoa da fila
+  mostrarFila(&f); // mostra a fila antes da remoção
+
+  // 1º PASSO: Criamos a variável local para receber os dados
   Pessoa removida;
-  remover(&f, &removida);// Aqui aplicamos a função de remocao
+  remover(&f, &removida);  // Aqui aplicamos a função de remocao
   printf("Pessoa removida: %s, %d\n", removida.nome, removida.idade);
 
   mostrarFila(&f);// Mostra a fila após a remoção
 
   return 0;
 }
+
+
     
