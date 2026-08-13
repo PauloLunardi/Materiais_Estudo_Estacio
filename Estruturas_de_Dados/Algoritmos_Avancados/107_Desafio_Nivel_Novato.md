@@ -60,17 +60,3 @@ O arranjo estrutural padrão montado para o fluxo de testes do detetive organiza
 
 ---
 
-## 5. Guia de Entrega e Versionamento (Tutorial Git)
-
-A publicação e a submissão do desafio dentro da plataforma do GitHub Classroom devem seguir o roteiro operacional abaixo:
-
-1. **Acesso ao Desafio:** Acesse o link de convite oficial enviado pela Enigma Studios para vincular o projeto à sua conta e instanciar o seu repositório privado de desenvolvimento.
-2. **Uso do CodeSpaces:** Ative o ambiente de desenvolvimento em nuvem do GitHub CodeSpaces embutido no repositório para editar e testar o código-fonte diretamente pelo navegador.
-3. **Codificação e Arquivos:** Trabalhe exclusivamente em cima dos arquivos modelo preexistentes na árvore de pastas. Não crie novos arquivos ou modifique a nomenclatura das pastas originais.
-4. **Comentários de Auditoria:** Comente obrigatoriamente todas as seções do código-fonte. Explique detalhadamente o propósito das variáveis, a verificação de ponteiros nulos (`== NULL`) que barram a navegação e o fluxo de chamadas do menu.
-5. **Commit e Push Final:** No terminal do CodeSpaces, execute os comandos do Git para salvar o progresso e realizar o upload definitivo para os servidores de correção automática do GitHub Classroom:
-   ```bash
-   git add .
-   git commit -m "Implementacao do mapa interativo de comodos - Detective Quest"
-   git push origin main
-   ```
