@@ -120,3 +120,21 @@ $$\begin{array}{r@{\quad}l}
 O estudo de baixo nível da aritmética de bases simula o pensamento dos engenheiros de computação da década de 1970, que projetavam softwares e sistemas complexos em restrições extremas de hardware utilizando linguagens como **Assembly**.
 
 Compreender o comportamento do transporte de bits (*carry* e *borrow*) permite prever estouros de capacidade física de variáveis (*Overflow*), otimizar rotinas em sistemas embarcados modernos e entender o funcionamento interno de registradores e microcontroladores na manipulação direta da memória.
+
+## Tabela de Equivalência Completa: Decimal (Base 10) vs. Hexadecimal (Base 16)
+
+Abaixo está o mapeamento unificado juntando as duas partes do material didático, cobrindo toda a sequência do número 0 até o 47 para você entender o uso das letras de A a F e as viradas de bloco:
+
+| Base Numérica | Valores e Correspondências Sequenciais (0 a 15) |
+| :--- | :--- |
+| **Base 10 (Decimal)** | 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11 | 12 | 13 | 14 | 15 |
+| **Base 16 (Hexadecimal)** | 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | A | B | C | D | E | F |
+| | |
+| **Base 10 (Decimal)** | 16 | 17 | 18 | 19 | 20 | 21 | 22 | 23 | 24 | 25 | 26 | 27 | 28 | 29 | 30 | 31 |
+| **Base 16 (Hexadecimal)** | 10 | 11 | 12 | 13 | 14 | 15 | 16 | 17 | 18 | 19 | 1A | 1B | 1C | 1D | 1E | 1F |
+| | |
+| **Base 10 (Decimal)** | 32 | 33 | 34 | 35 | 36 | 37 | 38 | 39 | 40 | 41 | 42 | 43 | 44 | 45 | 46 | 47 |
+| **Base 16 (Hexadecimal)** | 20 | 21 | 22 | 23 | 24 | 25 | 26 | 27 | 28 | 29 | 2A | 2B | 2C | 2D | 2E | 2F |
+
+*Nota de Estudo: Veja que os números de 10 a 15 viram as letras `A, B, C, D, E, F`. Quando chegamos no 16, a coluna da direita zera e "vai 1" para a esquerda, formando o `10`. Esse ciclo se repete perfeitamente em todas as linhas (10 a 1F, 20 a 2F).*
+
