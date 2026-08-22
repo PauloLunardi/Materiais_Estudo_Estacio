@@ -26,11 +26,14 @@ Para sustentar o compartilhamento de dados concorrente entre múltiplos usuário
                │
       ┌────────┴────────┐
       ▼                 ▼
-[Vantagens]       [Desvantagens]
-• Padronização    • Overhead / Desempenho
-• Produtividade   • Custos de Licença
-• Integridade     • Complexidade Técnica
-• Flexibilidade   • Inviável para Tempo Real
+
+| Vantagens do SBD | Desvantagens do SBD |
+| :--- | :--- |
+| • Padronização | • Overhead / Desempenho |
+| • Produtividade | • Custos de Licença |
+| • Integridade | • Complexidade Técnica |
+| • Flexibilidade | • Inviável para Tempo Real |
+
 
 ### Vantagens Corporativas
 
