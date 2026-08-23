@@ -46,86 +46,27 @@ O minimundo da empresa de limpeza exige a aplicação de conceitos avançados do
   * Existe uma relação base entre as tabelas de pedidos e o catálogo de serviços para compor os itens solicitados pelo cliente.
   * A alocação de um EMPREGADO não ocorre para o pedido como um todo e nem para o serviço genérico, mas sim para a linha exata de um serviço específico que foi incluído dentro daquele pedido determinado.
   * Para solucionar o impasse técnico de conectar a entidade EMPREGADO a uma relação existente, o vínculo entre pedido e serviço deve ser encapsulado sob a forma de uma **Entidade Associativa**, permitindo que ela receba a nova conexão de alocação de funcionários com segurança lógica.
- 
 
 
 
-### Representação Visual do DER
-
-### 1. Organograma Lógico dos Componentes
-
-O fluxo a seguir ilustra a distribuição das entidades, as regras de especialização e o encapsulamento da entidade associativa dentro do ecossistema do banco de dados. 
-
-mermaid
-
+```mermaid
 graph TD
-    %% Entidade Principal e Herança
-    CLIENTE["👤 CLIENTE<br/>(Código, Telefone, Endereço)"]
-    TRIANGULO{"▼ <br/> p,c"}
-    PF["Pessoa Física<br/>(CPF, Nome)"]
-    PJ["Pessoa Jurídica<br/>(CNPJ, Razão Social)"]
-
-    CLIENTE --> TRIANGULO
-    TRIANGULO --> PF
-    TRIANGULO --> PJ
-
-    %% Fluxo de Pedidos
-    PEDIDO["📋 PEDIDO_SERVICO<br/>(Número, Data, Realização)"]
-    CLIENTE -- "1,1 : 0,n" --- SOLICITACAO{SOLICITAÇÃO}
-    SOLICITACAO --- PEDIDO
-
-    %% Entidade Associativa (Agregação)
-    subgraph COMPOSICAO_SOLICITACAO [Entidade Associativa: COMPOSIÇÃO SOLICITAÇÃO]
-        TS["🛠️ TIPO_SERVIÇO<br/>(Código, Descrição, Valor, Duração)"]
-        INTERSECAO{SOLICITAÇÃO}
-        METRAGEM["Atributos:<br/>- Metragem<br/>- Localização"]
-        
-        INTERSECAO --- METRAGEM
-    end
-
-    PEDIDO -- "0,n" --- INTERSECAO
-    INTERSECAO -- "0,n" --- TS
-
-    %% Fluxo de Empregados
-    EMPREGADO["👥 EMPREGADO<br/>(Matrícula, Nome)"]
+    %% Hierarquia de Clientes
+    CLIENTE[CLIENTE] --> PF[PESSOA FISICA]
+    CLIENTE --> PJ[PESSOA JURIDICA]
     
-    EMPREGADO -- "0,n : 1,n" --- HABILITACAO{HABILITAÇÃO}
-    HABILITACAO --- TS
-
-    EMPREGADO -- "1,n : 0,n" --- ALOCACAO{ALOCAÇÃO}
-    ALOCACAO ---> INTERSECAO
-
-    %% Estilização Visual
-    style CLIENTE fill:#f9f,stroke:#333,stroke-width:2px
-    style PEDIDO fill:#f9f,stroke:#333,stroke-width:2px
-    style EMPREGADO fill:#f9f,stroke:#333,stroke-width:2px
-    style TS fill:#f9f,stroke:#333,stroke-width:2px
-    style COMPOSICAO_SOLICITACAO fill:#fff,stroke:#ff66b2,stroke-width:2px,stroke-dasharray: 5 5
-    style TRIANGULO fill:#fff,stroke:#333,stroke-width:1px
-
-Use o código com cuidado.
-
-### 2. Estrutura de Dicionário de Dados
-
-Abaixo estão listados os campos técnicos detalhados para cada caixa do organograma. 
-
-* **CLIENTE** 
-
-  * Código [Identificador]
-  * Telefone [Obrigatório]
-  * Endereço [Obrigatório]
-* **PEDIDO_SERVICO** 
-
-  * Número [Identificador]
-  * Data_Pedido [Obrigatório]
-  * Data_Realização [Obrigatório]
-* **TIPO_SERVIÇO** 
-
-  * Codigo [Identificador]
-  * Descrição [Obrigatório]
-  * Valor_M2 [Obrigatório]
-  * Duração_M2 [Obrigatório]
-* **EMPREGADO** 
-
-  * Matrícula [Identificador]
-  * Nome [Obrigatório]
+    %% Relacionamento de Pedidos
+    CLIENTE -- "1,1" --- SOLICITACAO((SOLICITAÇÃO))
+    SOLICITACAO -- "0,n" --- PEDIDO[PEDIDO_SERVICO]
+    
+    %% Entidade Associativa e Relações
+    PEDIDO -- "0,n" --- COMPOSICAO[COMPOSIÇÃO SOLICITAÇÃO]
+    TIPO_SERVICO[TIPO_SERVIÇO] -- "0,n" --- COMPOSICAO
+    
+    %% Fluxo de Empregados
+    EMPREGADO[EMPREGADO] -- "1,n" --- ALOCACAO((ALOCAÇÃO))
+    ALOCACAO --> COMPOSICAO
+    
+    EMPREGADO -- "0,n" --- HABILITACAO((HABILITAÇÃO))
+    HABILITACAO --- TIPO_SERVICO
+```
