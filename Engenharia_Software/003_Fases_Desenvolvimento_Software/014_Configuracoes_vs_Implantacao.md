@@ -18,7 +18,7 @@ Se você estivesse atuando como engenheiro de software ou profissional de DevOps
 
 ---
 
-## 🚀 Qual a Importância da GCS para a Etapa de Implantação?
+##  Qual a Importância da GCS para a Etapa de Implantação?
 
 A Gestão de Configurações é o alicerce que blinda a Implantação contra falhas catastróficas e indisponibilidade de ambiente. Sem a GCS, a implantação torna-se uma atividade caótica baseada em adivinhação. 
 
