@@ -42,3 +42,27 @@ Divide-se em três etapas fundamentais:
 * **3. Aceite Formal**
   * **Ambiente:** Fase burocrática e contratual de fechamento do projeto ou da iteração.
   * **Dinâmica:** O cliente corporativo ou o comitê de governança do projeto avalia todos os relatórios de testes (Alpha, Beta e de Validação). Caso o software cumpra os critérios de sucesso e os níveis de serviço acordados, o cliente assina formalmente o **Termo de Aceite**, autorizando o pagamento e a virada oficial do sistema para o uso em larga escala.
+
+## A Espiral de Testes de Software (Mapeamento com a Engenharia)
+
+Como ilustrado na imagem clássica da literatura de engenharia de software (proposta originalmente por **Roger Pressman**), o processo de testes não ocorre de forma aleatória. Existe uma **relação de espiral** direta entre as fases em que o sistema foi projetado e as fases em que ele é testado. 
+
+A espiral funciona em duas direções de leitura complementares:
+
+### 1. O Fluxo de Dentro para Fora (A Execução dos Testes)
+Durante a fase prática de testes, a equipe começa no centro da espiral e caminha para as bordas externas:
+* **Código ➔ Teste de Unidade:** O ponto de partida é o código-fonte bruto recém-escrito. O foco é testar as menores frações de lógica de forma isolada.
+* **Projeto ➔ Teste de Integração:** À medida que a espiral se expande, os componentes do design de arquitetura e projeto de classes começam a ser montados e testados em conjunto.
+* **Requisitos ➔ Teste de Validação:** Expandindo um pouco mais, o foco passa a ser validar se o produto final atende diretamente aos requisitos lógicos levantados com o cliente.
+* **Engenharia de Sistemas ➔ Teste de Sistema:** Na borda mais externa, o software deixa de ser avaliado isoladamente e passa a ser testado de forma integrada a todo o ecossistema (hardware, banco de dados, redes e outros sistemas da organização).
+
+### 2. O Fluxo de Correspondência (O Alinhamento Teórico)
+A grande sacada desse organograma em espiral é que **cada nível de teste usa como base de comparação os artefatos gerados na sua fase correspondente de engenharia**:
+
+* O **Teste de Unidade** toma como base a implementação do **Código**.
+* O **Teste de Integração** toma como base o desenho do **Projeto/Design** arquitetural.
+* O **Teste de Validação** toma como base os critérios mapeados na fase de **Requisitos**.
+* O **Teste de Sistema** toma como base o escopo macro desenhado na **Engenharia de Sistemas**.
+
+Em termos simples: você não consegue validar se um requisito foi cumprido na fase de teste unitário, assim como não olha o código-fonte de um método durante o teste de sistema. Cada nível tem seu papel e sua documentação de apoio correspondente.
+
