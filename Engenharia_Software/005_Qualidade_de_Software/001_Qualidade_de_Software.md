@@ -56,5 +56,3 @@ Garantir a qualidade não é um evento isolado que acontece no final do projeto 
 ### Mindset da Equipe
 * **Qualidade como responsabilidade de todos:** Desenvolvedores, Product Owners (POs) e testadores devem colaborar desde a concepção dos requisitos (abordagens como BDD - *Behavior-Driven Development*).
 
-Engenharia de Software vs. Qualidade, qualidade, processo metodo e ferramentas. metodologia de processo genérica, segundo Pressman (2016), compreende cinco atividades, Qualidade do produto (Correção, Confiabilidade, Eficiência, Integridade, Usabilidade, 
-Facilidade de manutenção, Flexibilidade, Testabilidade, Portabilidade, Reusabilidade, Interoperabilidade 
