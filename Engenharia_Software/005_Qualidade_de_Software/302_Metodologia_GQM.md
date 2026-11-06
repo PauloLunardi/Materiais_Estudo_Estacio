@@ -1,5 +1,5 @@
 # Metodologia GQM (Goal/Question/Metric) na Engenharia de Software
-
+ 
 O **GQM (Goal/Question/Metric)** é um modelo estruturado e hierárquico voltado para a medição direcionada a metas. O princípio fundamental do GQM é que **toda medição de software deve ter um propósito claro e explícito**, evitando o erro comum de equipes de tecnologia que coletam volumes massivos de dados e métricas sem saber como utilizá-los de forma prática para tomar decisões.
 
 ```
