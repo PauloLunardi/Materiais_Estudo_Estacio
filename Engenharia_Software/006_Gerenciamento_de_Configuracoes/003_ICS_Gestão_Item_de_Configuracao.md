@@ -22,7 +22,7 @@ Para que o gerenciamento funcione, cada artefato precisa de uma etiqueta única 
 
 ## 2. O Ciclo de Vida do ICS e as Referências (Detalhamento da Imagem)
 
-A imagem ilustra a relação entre o trabalho diário da equipe, os itens de configuração e o **Banco de Dados do Projeto** (o repositório controlado). O fluxo opera em dois sentidos:
+A relação entre o trabalho diário da equipe, os itens de configuração e o **Banco de Dados do Projeto** (o repositório controlado). O fluxo opera em dois sentidos:
 
 ### Fluxo de Entrada (Criação e Modificação)
 1. **Tarefas de Engenharia de Software:** Os desenvolvedores, arquitetos e testadores criam novos artefatos ou modificam itens existentes (`ICSs Modificados`).
