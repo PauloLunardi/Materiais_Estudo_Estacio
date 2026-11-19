@@ -59,11 +59,3 @@ Antes de liberar uma nova *release* para o mercado, a equipe de engenharia e ges
 * **Concorrência e Mercado:** A necessidade estratégica de responder rapidamente a um novo recurso lançado por um concorrente ou aproveitar uma janela comercial.
 * **Propostas de Melhoria de Clientes:** O acúmulo de solicitações relevantes enviadas pelos usuários que justificam a entrega de um novo pacote de valor.
 ```
-
-<FollowUp>
-Se desejar continuar, podemos abordar:
-* Os processos de **Construção de Sistema (System Building)** e integração contínua (CI/CD) que automatizam a criação dessas releases
-* As estratégias de **Implantação Segura** (como *Blue-Green Deployment* e *Canary Release*)
-
-Qual tópico você prefere explorar agora?
-</FollowUp>
